@@ -1,0 +1,192 @@
+
+
+                               INSTRUMENT CONTROL PARAMETERS:    GC_MS
+                               ---------------------------------------
+
+   D:\1\METHODS\GC PROJECT\40C_5c-min_1ml-min.M
+      Mon Jun 17 17:27:25 2024
+
+Control Information
+------- -----------
+
+Sample Inlet      :  GC
+Injection Source  :  Manual
+Mass Spectrometer :  Enabled
+
+Oven
+Equilibration Time                           0.5 min
+Oven Program                                 On
+    40 °C for 0 min
+    then 5 °C/min to 240 °C for 0 min
+Run Time                                     40 min
+
+
+
+
+No Injectors
+
+
+Front SS Inlet He
+Mode                                         Split
+Heater                                       On    260 °C
+Pressure                                     On    21.297 psi
+Total Flow                                   On    104 mL/min
+Septum Purge Flow                            On    3 mL/min
+Gas Saver                                    On    15 mL/min After 2 min
+Split Ratio                                  100 :1
+Split Flow                                   100 mL/min
+
+
+Back SS Inlet He
+Mode                                         Split
+Heater                                       Off
+Pressure                                     Off
+Total Flow                                   Off
+Septum Purge Flow                            Off
+Gas Saver                                    Off
+Split Ratio                                  100 :1
+Split Flow                                   0 mL/min
+
+
+Thermal Aux 2 {MSD Transfer Line}
+Heater                                       On
+Temperature Program                          On
+    260 °C for 0 min
+Run Time                                     40 min
+
+
+Column #1
+Agilent J&W HP-88: 4993.59798
+Agilent J&W HP-88
+250 °C: 60 m x 250 µm x 0.2 µm
+In: Front SS Inlet He
+Out: Aux EPC 2
+
+(Initial)                                    40 °C
+Pressure                                     21.297 psi
+Flow                                         1 mL/min
+Average Velocity                             18.607 cm/sec
+Holdup Time                                  5.3744 min
+Flow Program                                 On
+    1 mL/min for 0 min
+Run Time                                     40 min
+
+
+
+
+
+Front Detector FID
+Heater                                       Off
+H2 Flow                                      Off
+Air Flow                                     Off
+Makeup Flow                                  Off
+Const Col + Makeup                           Off
+Flame                                        Off
+Electrometer                                 Off
+
+
+Valve 1
+Other                                        Off
+
+
+
+
+
+
+
+
+Aux EPC 1 He
+Pressure Program                             Off
+    10 psi for 0 min
+Run Time                                     40 min
+
+Aux EPC 2 He
+Pressure Program                             On
+    4 psi for 0 min
+Run Time                                     40 min
+
+Aux EPC 3 He
+Pressure Program                             Off
+    10 psi for 0 min
+Run Time                                     40 min
+
+
+
+
+Signals
+ Test Plot                                   Save Off
+                                             50 Hz
+ Test Plot                                   Save Off
+                                             50 Hz
+ Test Plot                                   Save Off
+                                             50 Hz
+ Test Plot                                   Save Off
+                                             50 Hz
+
+
+                                MS ACQUISITION PARAMETERS
+
+
+General Information
+------- -----------
+
+Tune File                : atune.u
+Acquistion Mode          : Scan
+
+
+MS Information
+-- -----------
+
+Solvent Delay            : 0.05 min
+
+EMV Mode                 : Gain Factor
+Gain Factor              : 1.00
+Resulting EM Voltage     : 1835
+
+[Scan Parameters]
+
+Low Mass                 : 50.0
+High Mass                : 400.0
+Threshold                : 150
+Sample #                 : 1       A/D Samples    2
+Plot 2 low mass          : 50.0
+Plot 2 high mass         : 400.0
+
+[MSZones]
+
+MS Source                : 230 C   maximum 250 C
+MS Quad                  : 150 C   maximum 200 C
+
+
+                             END OF MS ACQUISITION PARAMETERS
+
+
+                              TUNE PARAMETERS for SN: US83110855
+                        -----------------------------
+
+ Trace Ion Detection is OFF.
+
+ EMISSION    :      34.610
+ ENERGY      :      69.922
+ REPELLER    :      21.746
+ IONFOCUS    :      90.157
+ ENTRANCE_LE :      28.500
+ EMVOLTS     :    1894.118
+                               Actual EMV  :    1835.29
+                               GAIN FACTOR :       0.97
+ AMUGAIN     :    1330.000
+ AMUOFFSET   :     124.000
+ FILAMENT    :       1.000
+ DCPOLARITY  :       0.000
+ ENTLENSOFFS :      17.569
+ MASSGAIN    :    -979.000   
+ MASSOFFSET  :     -37.000   
+
+                           END OF TUNE PARAMETERS
+                      ------------------------------------
+
+
+
+                                 END OF INSTRUMENT CONTROL PARAMETERS
+                                 ------------------------------------
+

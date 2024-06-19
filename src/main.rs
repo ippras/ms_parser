@@ -3,7 +3,8 @@ use ms::Reader;
 
 pub fn main() -> Result<()> {
     // let reader = Reader::new("input/7_FAMES_01.D/DATA.MS")?;
-    let reader = Reader::new("input/12_FAMES_01.D/DATA.MS")?;
+    // let reader = Reader::new("input/12_FAMES_01.D/DATA.MS")?;
+    let reader = Reader::new("input/Amal/40/Flow/SUP37-40C-5C-MIN-FLOW-1.D/DATA.MS")?;
     println!("header: {:#?}", reader.header());
 
     // let parse = reader.parse()?;
