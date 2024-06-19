@@ -30,7 +30,6 @@ use ordered_float::{NotNan, OrderedFloat};
 use polars::prelude::*;
 use std::{
     borrow::Borrow,
-    cmp::min,
     collections::{BTreeSet, HashMap},
     fmt::{self, Display, Formatter},
     fs::read,
@@ -131,7 +130,7 @@ impl Reader {
                         signal_range.start().min(signal)..=signal_range.end().max(signal);
                 }
                 Ok(Spectrum {
-                    retention_time: spectral.retention_time,
+                    retention_time: Time::new::<millisecond>(spectral.retention_time as _),
                     base_peak: spectral.base_peak,
                     peaks: spectral.peaks,
                     signal_range,
@@ -140,7 +139,10 @@ impl Reader {
             self.header.data_record_count,
         )(&self.input[self.header.directory_offset..])?;
         Ok(Parsed {
-            retention_time_range: self.header.retention_time_range,
+            retention_time_range: Time::new::<millisecond>(
+                *self.header.retention_time_range.start() as _,
+            )
+                ..=Time::new::<millisecond>(*self.header.retention_time_range.end() as _),
             signal_range: self.header.signal_range,
             spectrums,
         })
@@ -165,11 +167,14 @@ impl Reader {
                     PrimitiveChunkedBuilder::new("Signal", length);
                 for peak in &spectral.peaks {
                     mass_to_charges.append_value(peak.mass_to_charge());
+                    //                     spectral.base_peak: Peak { mass_to_charge: 57.0, abundance: 3926.0 }
+                    // spectral.base_peak: Peak { mass_to_charge: 57.0, abundance: 4803.0 }
+                    // println!("spectral.base_peak: {}", spectral.base_peak);
                     signals.append_value(peak.signal());
                 }
                 assert_eq!(directory.retention_time, spectral.retention_time);
                 data_frame.vstack_mut(&df! {
-                    "Retention time" => vec![spectral.retention_time.get::<second>(); length],
+                    "Retention time" => vec![spectral.retention_time; length],
                     "Mass to charge" => mass_to_charges.finish(),
                     "Signal" => signals.finish(),
                 }?)?;
@@ -177,32 +182,39 @@ impl Reader {
             }),
             self.header.data_record_count,
         )(&self.input[self.header.directory_offset..])?;
-
-        // 0.10
-        // 0.05
-        println!("data_frame: {}", data_frame);
-        let grouped = data_frame
+        let retention_time_range = data_frame
             .clone()
             .lazy()
-            .group_by(["Retention time"])
-            .agg([
-                col("Mass to charge").sort(Default::default()),
-                col("Signal"),
-                col("Mass to charge").min().alias("MIN mass to charge"),
-                col("Mass to charge").max().alias("MAX mass to charge"),
-                col("Mass to charge").sum().alias("SUM mass to charge"),
+            .select([
+                min("Retention time").alias("RT.MIN"),
+                max("Retention time").alias("RT.MAX"),
+                min("Signal").alias("S.MIN"),
+                max("Signal").alias("S.MAX"),
             ])
-            .sort(["Retention time"], Default::default())
             .collect()?;
-        println!("grouped: {}", grouped);
-        // assert_eq!(self.header.retention_time_range, );
-        // assert_eq!(self.header.signal_range, );
+        // matches!(
+        //     (
+        //         retention_time_range["RT.MIN"].get(0)?,
+        //         retention_time_range["RT.MAX"].get(0)?
+        //     ),
+        //     (Ok)
+        // );
+        // assert_eq!(
+        //     self.header.retention_time_range,
+        //     retention_time_range["RT.MIN"].get(0)?.try_extract::<f32>()?
+        //         ..=retention_time_range["RT.MAX"].get(0)?.try_extract::<f32>()?
+        // );
+        assert_eq!(
+            self.header.retention_time_range,
+            retention_time_range["RT.MIN"].get(0)?.try_extract()?
+                ..=retention_time_range["RT.MAX"].get(0)?.try_extract()?
+        );
+        assert_eq!(
+            self.header.signal_range,
+            retention_time_range["S.MIN"].get(0)?.try_extract()?
+                ..=retention_time_range["S.MAX"].get(0)?.try_extract()?
+        );
         Ok(data_frame)
-        // Ok(Parsed {
-        //     retention_time_range: self.header.retention_time_range,
-        //     signal_range: self.header.signal_range,
-        //     spectrums,
-        // })
     }
 
     /// Spectral
@@ -215,7 +227,9 @@ impl Reader {
     /// Times
     pub fn times(&self) -> Result<Vec<Time>> {
         let (_, times) = count(
-            map(Directory::parse, |directory| directory.retention_time()),
+            map(Directory::parse, |directory| {
+                Time::new::<millisecond>(directory.retention_time() as _)
+            }),
             self.header.data_record_count,
         )(&self.input[self.header.directory_offset..])?;
         Ok(times)

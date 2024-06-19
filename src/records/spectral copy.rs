@@ -1,11 +1,16 @@
 use super::Parse;
-use crate::{error::Result, utils::Preview};
+use crate::{
+    error::Result,
+    utils::{format_slice, Preview},
+};
+use itertools::Itertools;
 use nom::{
     multi::count,
     number::complete::{be_i16, be_i32, be_u16},
     sequence::pair,
 };
 use std::fmt::{self, Display, Formatter};
+use uom::si::{f32::Time, time::millisecond};
 
 const MASS_TO_CHARGE_FACTOR: f32 = 20.0;
 
@@ -27,13 +32,13 @@ fn unpack(packed: u16) -> u32 {
 #[derive(Debug, Default)]
 pub struct Spectral {
     /// Retention time ms
-    pub(crate) retention_time: i32,
+    pub(crate) retention_time: Time,
     pub(crate) base_peak: Peak,
     pub(crate) peaks: Vec<Peak>,
 }
 
 impl Spectral {
-    pub fn retention_time(&self) -> i32 {
+    pub fn retention_time(&self) -> Time {
         self.retention_time
     }
 
@@ -63,7 +68,7 @@ impl Spectral {
         Ok((
             input,
             Self {
-                retention_time,
+                retention_time: Time::new::<millisecond>(retention_time as _),
                 base_peak,
                 peaks,
             },

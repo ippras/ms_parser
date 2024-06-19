@@ -1,4 +1,4 @@
-use super::{WordsToBytes, Parse, Spectral};
+use super::{Parse, Spectral, WordsToBytes};
 use crate::error::Result;
 use nom::number::complete::be_i32;
 use std::fmt::{self, Display, Formatter};
@@ -16,14 +16,15 @@ pub const DIRECTORY_SIZE: usize = 12;
 #[derive(Debug, Default)]
 pub struct Directory {
     pub(crate) spectrum_offset: usize,
-    pub(crate) retention_time: Time,
+    /// Retention time ms
+    pub(crate) retention_time: i32,
     // This Total Signal value is representative of TIC, but it has been scaled
     // down by some sort of polynomial transformation.
     total_signal: i32,
 }
 
 impl Directory {
-    pub fn retention_time(&self) -> Time {
+    pub fn retention_time(&self) -> i32 {
         self.retention_time
     }
 
@@ -48,7 +49,7 @@ impl Parse for Directory {
             input,
             Self {
                 spectrum_offset: spectrum_offset.words_to_bytes(),
-                retention_time: Time::new::<millisecond>(retention_time as _),
+                retention_time,
                 total_signal,
             },
         ))
@@ -60,8 +61,7 @@ impl Display for Directory {
         f.debug_struct("Directory")
             .field(
                 "retention_time",
-                &self
-                    .retention_time
+                &Time::new::<millisecond>(self.retention_time as _)
                     .into_format_args(second, DisplayStyle::Description),
             )
             .field("total_signal", &self.total_signal)

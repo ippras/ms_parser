@@ -1,11 +1,10 @@
-use super::{WordsToBytes, Parse};
+use super::{Parse, WordsToBytes};
 use crate::{error::Result, utils::nom::string};
 use nom::{
     bytes::complete::take,
     number::complete::{be_i16, be_i32},
 };
 use std::{ops::RangeInclusive, str};
-use uom::si::{f32::Time, time::millisecond};
 
 pub const HEADER_SIZE: usize = 512;
 
@@ -46,7 +45,7 @@ pub struct Header {
     pub normalization_records_offset: usize,
     extra_records: i16,
     pub data_record_count: usize,
-    pub retention_time_range: RangeInclusive<Time>,
+    pub retention_time_range: RangeInclusive<i32>,
     pub signal_range: RangeInclusive<usize>,
 }
 
@@ -113,8 +112,7 @@ impl Parse for Header {
                 normalization_records_offset: normalization_records_offset.words_to_bytes(),
                 extra_records,
                 data_record_count: data_record_count as _,
-                retention_time_range: Time::new::<millisecond>(retention_time_msec_start as _)
-                    ..=Time::new::<millisecond>(retention_time_msec_end as _),
+                retention_time_range: retention_time_msec_start..=retention_time_msec_end,
                 signal_range: signal_minimum as _..=signal_maximum as _,
             },
         ))
