@@ -9,7 +9,8 @@ use std::fmt::{self, Display, Formatter};
 
 const MASS_TO_CHARGE_FACTOR: f32 = 20.0;
 
-/// Abundance is in special packed format.  
+/// Abundance is in special packed format.
+///
 /// Packed abundance stored as 2-bit scale (0..=3; power of 8; x1, x8, x64,
 /// x512) with 14 bit mantissa (0..=16383).
 fn unpack(packed: u16) -> u32 {
@@ -46,6 +47,8 @@ impl Spectral {
     }
 }
 
+// 1001_0100_0111_1011_1110 (608190)
+// 1110_0010_0101_0001 (57937)
 impl Spectral {
     pub fn parse(input: &[u8]) -> Result<(&[u8], Self)> {
         assert!(input.len() > 18);
@@ -115,7 +118,9 @@ impl Parse for Peak {
             input,
             Self {
                 mass_to_charge: mass_to_charge as f32 / MASS_TO_CHARGE_FACTOR,
-                abundance: unpack(abundance as _) as _,
+                abundance: abundance as _,
+                // TODO: OpenChrome does not unpack abundance
+                // abundance: unpack(abundance as _) as _,
             },
         ))
     }

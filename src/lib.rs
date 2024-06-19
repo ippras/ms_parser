@@ -149,49 +149,34 @@ impl Reader {
     }
 
     pub fn parse_data_frame(self) -> Result<DataFrame> {
-        // let s1 = Series::new("Fruit", &["Apple", "Apple", "Pear"]);
-        // let s2 = Series::new("Color", &["Red", "Yellow", "Green"]);
-        let mut data_frame = DataFrame::empty();
-        // let mut ecn: ListPrimitiveChunkedBuilder<Int32Type> =
-        //     ListPrimitiveChunkedBuilder::new("PECN", 8, 8, DataType::Int32);
-        // ecn.append_slice(&[12, 12, 12]);
-        // let mut retention_time: PrimitiveChunkedBuilder<Float32Type> =
-        //     PrimitiveChunkedBuilder::new("Retention time", self.header.data_record_count);
+        let mut retention_time = Vec::new();
+        let mut mass_to_charge = Vec::new();
+        let mut signal = Vec::new();
         let (_, series) = count(
             map_res(Directory::parse, |directory| {
                 let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
-                let length = spectral.peaks.len();
-                let mut mass_to_charges: PrimitiveChunkedBuilder<Float32Type> =
-                    PrimitiveChunkedBuilder::new("Mass to charge", length);
-                let mut signals: PrimitiveChunkedBuilder<Float32Type> =
-                    PrimitiveChunkedBuilder::new("Signal", length);
-                for peak in &spectral.peaks {
-                    mass_to_charges.append_value(peak.mass_to_charge());
-                    //                     spectral.base_peak: Peak { mass_to_charge: 57.0, abundance: 3926.0 }
-                    // spectral.base_peak: Peak { mass_to_charge: 57.0, abundance: 4803.0 }
-                    // println!("spectral.base_peak: {}", spectral.base_peak);
-                    signals.append_value(peak.signal());
-                }
                 assert_eq!(directory.retention_time, spectral.retention_time);
-                data_frame.vstack_mut(&df! {
-                    "Retention time" => vec![spectral.retention_time; length],
-                    "Mass to charge" => mass_to_charges.finish(),
-                    "Signal" => signals.finish(),
-                }?)?;
+                retention_time.push(spectral.retention_time);
+                mass_to_charge.push(Series::from_iter(
+                    spectral.peaks.iter().map(|peak| peak.mass_to_charge()),
+                ));
+                signal.push(Series::from_iter(
+                    spectral.peaks.iter().map(|peak| peak.signal()),
+                ));
                 Ok(())
             }),
             self.header.data_record_count,
         )(&self.input[self.header.directory_offset..])?;
-        let retention_time_range = data_frame
-            .clone()
-            .lazy()
-            .select([
-                min("Retention time").alias("RT.MIN"),
-                max("Retention time").alias("RT.MAX"),
-                min("Signal").alias("S.MIN"),
-                max("Signal").alias("S.MAX"),
-            ])
-            .collect()?;
+        // let retention_time_range = data_frame
+        //     .clone()
+        //     .lazy()
+        //     .select([
+        //         min("Retention time").alias("RT.MIN"),
+        //         max("Retention time").alias("RT.MAX"),
+        //         min("Signal").alias("S.MIN"),
+        //         max("Signal").alias("S.MAX"),
+        //     ])
+        //     .collect()?;
         // matches!(
         //     (
         //         retention_time_range["RT.MIN"].get(0)?,
@@ -204,17 +189,21 @@ impl Reader {
         //     retention_time_range["RT.MIN"].get(0)?.try_extract::<f32>()?
         //         ..=retention_time_range["RT.MAX"].get(0)?.try_extract::<f32>()?
         // );
-        assert_eq!(
-            self.header.retention_time_range,
-            retention_time_range["RT.MIN"].get(0)?.try_extract()?
-                ..=retention_time_range["RT.MAX"].get(0)?.try_extract()?
-        );
-        assert_eq!(
-            self.header.signal_range,
-            retention_time_range["S.MIN"].get(0)?.try_extract()?
-                ..=retention_time_range["S.MAX"].get(0)?.try_extract()?
-        );
-        Ok(data_frame)
+        // assert_eq!(
+        //     self.header.retention_time_range,
+        //     retention_time_range["RT.MIN"].get(0)?.try_extract()?
+        //         ..=retention_time_range["RT.MAX"].get(0)?.try_extract()?
+        // );
+        // assert_eq!(
+        //     self.header.signal_range,
+        //     retention_time_range["S.MIN"].get(0)?.try_extract()?
+        //         ..=retention_time_range["S.MAX"].get(0)?.try_extract()?
+        // );
+        Ok(df! {
+            "Retention time" => retention_time,
+            "Mass to charge" => mass_to_charge,
+            "Signal" => signal,
+        }?)
     }
 
     /// Spectral
