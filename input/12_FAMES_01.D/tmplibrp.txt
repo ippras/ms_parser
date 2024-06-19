@@ -1,0 +1,646 @@
+              Laboratory of Plant Lipids     Library Search Report
+
+  Data Path : D:\Roman\2023\Bact\
+  Data File : 12_FAMES_01.D                                       
+  Acq On    : 22 Feb 2023  16:59
+  Operator  : Roman A Sidorov
+  Sample    :  
+  Misc      : Split 1:1
+  ALS Vial  : 1   Sample Multiplier: 1   Samp. Amt.: 1
+
+  Search Libraries:   C:\Database\NIST08.L              Minimum Quality:  80
+                      C:\Database\PMW_Tox3.l            Minimum Quality:  80
+                      C:\Database\wiley7n.l           
+
+  Unknown Spectrum:   Apex
+  Integration Events: ChemStation Integrator - autoint1.e
+
+Pk#     RT  Area%          Library/ID                 Ref#     CAS#   Qual
+_____________________________________________________________________________
+  1  11.680  0.30 C:\Database\wiley7n.l
+                 Dodecane $$ n-Dodecane $$ Adakane   74403 000112-40-3 76
+                 12 $$ Ba 51-090453 $$ CH3(CH2)10CH
+                 3 $$ Bihexyl $$ Dihexyl $$ n-Dodec
+                 ane min $$ Duodecane $$ Isododecan
+                 Dodecane (CAS) $$ n-Dodecane $$ Ba  74393 000112-40-3 72
+                  51-090453 $$ Adakane 12 $$ Isodod
+                 ecane
+                 Dodecane (CAS) $$ n-Dodecane $$ Ba  74407 000112-40-3 64
+                  51-090453 $$ Adakane 12 $$ Isodod
+                 ecane $$ CH3(CH2)10CH3 $$ Bihexyl 
+                 $$ Dihexyl $$ n-Dodecane min $$ N-
+                 Dodecan $$ Duodecane $$ ACETIC ACI
+                 D 3-HYDROXY-7-ISOPROPENYL-1,4A-DIM
+                 ETHYL-2,3,4,4A,5,6,7,8-OCTAHYDRO-N
+                 AP
+ 
+  2  13.190  0.33 C:\Database\wiley7n.l
+                 Hexanoic acid, methyl ester $$ Met  26364 000106-70-7 80
+                 hyl caproate $$ Methyl capronate $
+                 $ Methyl hexanoate $$ Methyl hexoa
+                 te $$ Methyl n-hexanoate $$ Caproi
+                 c acid methyl ester $$ n-Caproic a
+                 cid methyl ester $$ Methyl hexylat
+                 e $$ Methyl ester of hexanoic acid
+                 Hexanoic acid, methyl ester (CAS)   26376 000106-70-7 80
+                 $$ Methyl caproate $$ CAPROIC ACID
+                 -METHYL ESTER $$ Methyl hexanoate 
+                 $$ Methyl n-hexanoate $$ Methyl he
+                 xoate $$ Methyl capronate $$ Methy
+                 l ester of hexanoic acid $$ Caproi
+                 c acid methyl ester $$ n-Caproic a
+                 cid methyl ester
+                 Hexanoic acid, methyl ester (CAS)   26374 000106-70-7 72
+                 $$ Methyl caproate $$ CAPROIC ACID
+                 -METHYL ESTER $$ Methyl hexanoate 
+                 $$ Methyl n-hexanoate $$ Methyl he
+                 xoate $$ Methyl capronate $$ Methy
+                 l ester of hexanoic acid $$ Caproi
+                 c acid methyl ester $$ n-Caproic a
+                 cid methyl ester
+ 
+  3  13.591  0.18 C:\Database\PMW_Tox3.l
+                 Docosane                             4946 000629-97-0 80
+                  P2690
+                 Octacosane                           3797 000630-02-4 53
+                  P1837
+                 Tricosane                            2364 000638-67-5 50
+                  P1612
+ 
+  4  15.200  0.11 C:\Database\wiley7n.l
+                 Dotriacontane                      355041 000544-85-4 38
+                 Dodecane, 2-methyl-6-propyl-       154939 055045-08-4 38
+                 Tetradecane                        113289 000629-59-4 38
+ 
+  5  15.918  0.13 C:\Database\wiley7n.l
+                 Benzenamine (CAS) $$ Aniline $$ C.   5670 000062-53-3 87
+                 I. 76000 $$ Anyvim $$ Blue Oil $$ 
+                 Aminophen $$ Phenylamine $$ Aminob
+                 enzene $$ Benzene, amino- $$ Anili
+                 ne Oil $$ Aniline reagent $$ Anili
+                 n $$ Anilina $$ Benzidam $$ C.I. O
+                 xidation base 1 $$ Cyanol $$ Huile
+                  D'aniline $$ Kry
+                 Pyridine, 3-methyl- (CAS) $$ 3-Met   5645 000108-99-6 80
+                 hylpyridine $$ 3-Picoline $$ m-Pic
+                 oline $$ .beta.-Picoline $$ .beta.
+                 -Methylpyridine $$ Meta-methylpyri
+                 dine $$ B-Picoline $$ UN 2313 $$ m
+                 -Methylpyridine
+                 2-Pyridinecarboxylic acid, 6-methy  32562 000934-60-1 78
+                 l- $$ Picolinic acid, 6-methyl- $$
+                  2-Carboxy-6-methylpyridine $$ 2-P
+                 icoline-6-carboxylic acid $$ 6-Met
+                 hyl-2-pyridinecarboxylic acid $$ 6
+                 -Methylpicolinic acid
+ 
+  6  15.979  0.20 C:\Database\NIST08.L
+                 Pyridine, 3-methyl-                  2489 000108-99-6 90
+                 Pyridine, 3-methyl-                  2480 000108-99-6 90
+                 Pyridine, 3-methyl-                  2488 000108-99-6 81
+ 
+  7  16.395  0.12 C:\Database\wiley7n.l
+                 Heptanoic acid, methyl ester        40218 000106-73-0 74
+                 Decanoic acid, methyl ester (CAS)   95553 000110-42-9 72
+                 $$ Methyl caprate $$ Methyl decano
+                 ate $$ Capric acid methyl ester $$
+                  Uniphat A30 $$ Metholene 2095 $$ 
+                 Methyl caprinate $$ Methyl-n-capra
+                 te $$ Decanoic acid methyl ester $
+                 $ Methyl n-caprate $$ Methyl n-dec
+                 anoate $$ n-Capri
+                 Decanoic acid, methyl ester (CAS)   95541 000110-42-9 64
+                 $$ Methyl caprate $$ Methyl decano
+                 ate $$ Capric acid methyl ester $$
+                  Uniphat A30 $$ Metholene 2095 $$ 
+                 Methyl caprinate $$ Methyl-n-capra
+                 te $$ Decanoic acid methyl ester $
+                 $ Methyl n-caprate $$ Methyl n-dec
+                 anoate $$ n-Capri
+ 
+  8  16.491  0.14 C:\Database\wiley7n.l
+                 Tetradecane                        113300 000629-59-4 74
+                 Tetradecane, 2-methyl- $$ 2-Methyl 134023 001560-95-8 72
+                 tetradecane
+                 pentadecane                        134046 000629-62-9 70
+ 
+  9  16.571  0.18 C:\Database\NIST08.L
+                 2-Bromotetradecane                 118045 074036-95-6 86
+                 Tetratetracontane                  218306 007098-22-8 86
+                 Heneicosane                        133835 000629-94-7 80
+ 
+ 10  16.957  0.08 C:\Database\wiley7n.l
+                 Hexatriacontane                    369892 000630-06-8 58
+                 Decane, 2,4-dimethyl- $$ 2,4-Dimet  74432 002801-84-5 50
+                 hyldecane
+                 Decane, 2,3,5-trimethyl-            93440 062238-11-3 47
+ 
+ 11  17.570  0.34 C:\Database\wiley7n.l
+                 Hexadecane (CAS) $$ n-Hexadecane $ 154915 000544-76-3 70
+                 $ Cetane $$ n-Cetane $$ Isohexadec
+                 ane $$ HEXADECAN
+                 Hexadecane                         154904 000544-76-3 64
+                 Hexadecane                         154909 000544-76-3 55
+ 
+ 12  17.855  0.05 C:\Database\wiley7n.l
+                 Tetradecane (CAS) $$ n-Tetradecane 113298 000629-59-4 52
+                  $$ Isotetradecane
+                 Tetratetracontane $$ n-Tetratetrac 383557 007098-22-8 52
+                 ontane
+                 Nonadecane                         211481 000629-92-5 49
+ 
+ 13  17.945  0.12 C:\Database\NIST08.L
+                 Methoxyacetic acid, 2-tetradecyl e 126101 1000282-04-8 90
+                 ster
+                 Undecane, 2,3-dimethyl-             47641 017312-77-5 80
+                 10-Methylnonadecane                122934 056862-62-5 80
+ 
+ 14  18.112  0.12 C:\Database\wiley7n.l
+                 Pentadecane                        134009 000629-62-9 70
+                 (2S,3R)-3-dimethyl-t-butylsiloxy-2 181197 097848-37-8 64
+                 ,4-dimethylpentan-1-ol $$ 1-Pentan
+                 ol, 3-[[(1,1-dimethylethyl)dimethy
+                 lsilyl]oxy]-2,4-dimethyl-, [R-(R*,
+                 S*)]- (CAS)
+                 pentadecane                        134046 000629-62-9 62
+ 
+ 15  18.354  0.09 C:\Database\wiley7n.l
+                 Octacosane (CAS) $$ n-Octacosane   329269 000630-02-4 64
+                 Tetratetracontane                  383558 007098-22-8 64
+                 Tridecane, 5-propyl-               154935 055045-11-9 59
+ 
+ 16  18.505  0.18 C:\Database\NIST08.L
+                 Dodecane, 2-methyl-6-propyl-        79905 055045-08-4 83
+                 Heptadecane, 2,6,10,15-tetramethyl 133846 054833-48-6 78
+                 Hexadecane, 2-methyl-               90424 001560-92-5 74
+ 
+ 17  18.571  0.27 C:\Database\NIST08.L
+                 Heneicosane                        133836 000629-94-7 91
+                 Heptadecane                         90418 000629-78-7 87
+                 Heneicosane, 11-(1-ethylpropyl)-   180776 055282-11-6 86
+ 
+ 18  18.772  0.10 C:\Database\wiley7n.l
+                 Propanedioic acid, dimethyl ester   27642 000108-59-8 38
+                 $$ Malonic acid, dimethyl ester $$
+                  Dimethyl malonate $$ Dimethyl pro
+                 panedioate $$ Methyl malonate $$ D
+                 imethyl ester of malonic acid
+                 Malonic acid, acetyl-, dimethyl es  77924 017094-36-9 38
+                 ter $$ Propanedioic acid, acetyl-,
+                  dimethyl ester
+                 1,2-Dimethyl-trans-1,2-epoxycycloh  23056 000000-00-0 18
+                 exane
+ 
+ 19  18.830  0.17 C:\Database\NIST08.L
+                 Tetracontane, 3,5,24-trimethyl-    217985 055162-61-3 80
+                 Oxalic acid, allyl pentadecyl este 165426 1000309-24-3 58
+                 7-Oxabicyclo[4.1.0]heptan-2-one, 6  11086 021889-89-4 46
+                 -methyl-
+ 
+ 20  19.380  0.11 C:\Database\NIST08.L
+                 Methoxyacetic acid, 2-tetradecyl e 126101 1000282-04-8 90
+                 ster
+                 Hexadecane, 1-bromo-               139615 000112-82-3 86
+                 Tetratetracontane                  218306 007098-22-8 80
+ 
+ 21  19.937  0.95 C:\Database\NIST08.L
+                 Butanedioic acid, dimethyl ester    21521 000106-65-0 83
+                 Butanedioic acid, dimethyl ester    21522 000106-65-0 78
+                 Pentanedioic acid, 2-oxo-, dimethy  40376 013192-04-6 64
+                 l ester
+ 
+ 22  20.232  0.04 C:\Database\PMW_Tox3.l
+                 Octacosane                           3797 000630-02-4 86
+                  P1837
+                 Undecane                             3792 001120-21-4 83
+                   P627
+                 Docosane                             4946 000629-97-0 80
+                  P2690
+ 
+ 23  20.308  0.13 C:\Database\NIST08.L
+                 Octacosane                         193568 000630-02-4 86
+                 Pentacosane                        172981 000629-99-2 80
+                 Triacontane                        201783 000638-68-6 72
+ 
+ 24  20.572  0.14 C:\Database\wiley7n.l
+                 Undecanoic acid, 10-methyl-, methy 136187 005129-56-6 76
+                 l ester
+                 Nonanoic acid, methyl ester         76335 001731-84-6 64
+                 Nonanoic acid, methyl ester (CAS)   76341 001731-84-6 64
+                 $$ Methyl nonanoate $$ Methyl n-no
+                 nanoate $$ Nonanoic acid methyl es
+                 ter $$ Methyl nonylate $$ Methyl p
+                 elargonate $$ Pelargonic acid meth
+                 yl ester $$ NONANOIC ACID-METHYL E
+                 STER $$ PELARGONSAEUREMETHYLESTER
+ 
+ 25  20.731  0.15 C:\Database\wiley7n.l
+                 1-methylethyl tetradecanoate       213963 000000-00-0 49
+                 n-Capric acid isopropyl ester $$ D 136290 002311-59-3 38
+                 ecanoic acid, 1-methylethyl ester
+                 2-Imidazolidinethione (CAS) $$ ETU   9064 000096-45-7 25
+                  $$ NA 22 $$ 2-Mercaptoimidazoline
+                  $$ Pennac CRA $$ Warecure C $$ Rh
+                 odanin S 62 $$ Ethylenethiourea $$
+                  Imidazolidinethione $$ Imidazolin
+                 e-2-thiol $$ Mercaptoimidazoline $
+                 $ 1,3-Ethylenethiourea $$ N,N'-Eth
+                 ylenethiourea $$
+ 
+ 26  22.088  3.91 C:\Database\NIST08.L
+                 3-Pyridinecarboxaldehyde             5100 000500-22-1 96
+                 4-Pyridinecarboxaldehyde             5105 000872-85-5 93
+                 4-Pyridinecarboxaldehyde             5099 000872-85-5 93
+ 
+ 27  22.292  0.15 C:\Database\wiley7n.l
+                 4-Pyridinecarboxaldehyde            10840 000872-85-5 76
+                 3-Pyridinecarboxaldehyde (CAS) $$   10836 000500-22-1 68
+                 Pyridine-3-aldehyde $$ Rowalind $$
+                  Nicotinaldehyde $$ Nicotinealdehy
+                 de $$ 3-Formylpyridine $$ 3-Pyridy
+                 laldehyde $$ 3-Pyridinaldehyde $$ 
+                 Nicotinic aldehyde $$ 3-Pyridineal
+                 dehyde $$ 3-Pyridenecarboxaldehyde
+                  $$ 3-Pyridylcarb
+                 4-Pyridinecarboxaldehyde            10839 000872-85-5 68
+ 
+ 28  22.582  1.18 C:\Database\NIST08.L
+                 3-(Chloromethyl)pyridine            11628 003099-31-8 95
+                 3-(Chloromethyl)pyridine            11626 003099-31-8 91
+                 Pyridine, 4-methyl-2-nitro-         16940 018368-71-3 28
+ 
+ 29  22.748  0.49 C:\Database\NIST08.L
+                 Methyl tetradecanoate               91835 000124-10-7 89
+                 Methyl tetradecanoate               91837 000124-10-7 87
+                 Methyl tetradecanoate               91838 000124-10-7 80
+ 
+ 30  23.280  3.11 C:\Database\NIST08.L
+                 Benzaldehyde, 3,5-dimethyl-         15135 005779-95-3 93
+                 Benzaldehyde, 3,4-dimethyl-         15137 005973-71-7 91
+                 1,4-Benzenedicarboxaldehyde         15092 000623-27-8 87
+ 
+ 31  23.936  0.58 C:\Database\NIST08.L
+                 Pentadecanoic acid, methyl ester   102769 007132-64-1 98
+                 Pentadecanoic acid, methyl ester   102768 007132-64-1 97
+                 Pentadecanoic acid, methyl ester   102766 007132-64-1 97
+ 
+ 32  25.156 22.19 C:\Database\NIST08.L
+                 Hexadecanoic acid, methyl ester    113682 000112-39-0 98
+                 Hexadecanoic acid, methyl ester    113688 000112-39-0 97
+                 Hexadecanoic acid, methyl ester    113690 000112-39-0 95
+ 
+ 33  25.380  0.06 C:\Database\wiley7n.l
+                 Hexadecanoic acid, methyl ester    213889 000112-39-0 76
+                 Hexadecanoic acid, methyl ester (C 213907 000112-39-0 70
+                 AS) $$ Methyl palmitate $$ Methyl 
+                 hexadecanoate $$ Methyl n-hexadeca
+                 noate $$ Uniphat A60 $$ Metholene 
+                 2216 $$ Palmitic acid methyl ester
+                  $$ Palmitic acid, methyl ester $$
+                  n-Hexadecanoic acid methyl ester 
+                 $$ PALMITIC ACID-
+                 Hexadecanoic acid, methyl ester (C 213909 000112-39-0 62
+                 AS) $$ Methyl palmitate $$ Methyl 
+                 hexadecanoate $$ Methyl n-hexadeca
+                 noate $$ Uniphat A60 $$ Metholene 
+                 2216 $$ Palmitic acid methyl ester
+                  $$ Palmitic acid, methyl ester $$
+                  n-Hexadecanoic acid methyl ester 
+                 $$ PALMITIC ACID-
+ 
+ 34  25.602  0.12 C:\Database\NIST08.L
+                 9-Hexadecenoic acid, methyl ester, 111924 001120-25-8 83
+                  (Z)-
+                 Cyclopropaneoctanoic acid, 2-hexyl 122852 010152-61-1 80
+                 -, methyl ester
+                 9-Octadecenoic acid (Z)-, methyl e 133717 000112-62-9 74
+                 ster
+ 
+ 35  25.733  0.07 C:\Database\wiley7n.l
+                 3-(Chloromethyl)pyridine $$ Pyridi  23464 003099-31-8 35
+                 ne, 3-(chloromethyl)- $$ .alpha.-C
+                 hloro-3-picoline $$ .beta.-Picolin
+                 e chloride $$ 3-Picoline, .alpha.-
+                 chloro- $$ 3-Picolyl chloride $$ 3
+                 -Pyridylmethyl chloride
+                 Benzenamine, N-hydroxy-             11780 000100-65-2 30
+                 Cyclohexanone, 4-ethyl-4-methyl-3-  90188 055821-16-4 27
+                 (1-methylethyl)-, trans- (CAS) $$ 
+                 1-ETHYL-CIS-O-MENTH-4-ONE
+ 
+ 36  25.847  0.41 C:\Database\NIST08.L
+                 9-Octadecenoic acid (Z)-, methyl e 133716 000112-62-9 93
+                 ster
+                 Methyl hexadec-9-enoate            111879 010030-74-7 91
+                 11-Hexadecenoic acid, methyl ester 111903 055000-42-5 90
+ 
+ 37  25.937  0.08 C:\Database\NIST08.L
+                 Heptadecanoic acid, methyl ester   124598 001731-92-6 90
+                 Heptadecanoic acid, methyl ester   124600 001731-92-6 81
+                 Methyl 14-methylhexadecanoate      124584 1000336-34-4 80
+ 
+ 38  26.283  6.73 C:\Database\NIST08.L
+                 Heptadecanoic acid, methyl ester   124602 001731-92-6 98
+                 Heptadecanoic acid, methyl ester   124601 001731-92-6 98
+                 Heptadecanoic acid, methyl ester   124600 001731-92-6 95
+ 
+ 39  26.391  0.29 C:\Database\NIST08.L
+                 Phenol, 2,4-bis(1,1-dimethylethyl)  63991 000096-76-4 87
+                 Phenol, 2,4-bis(1,1-dimethylethyl)  63985 000096-76-4 87
+                 Phenol, 2,4-bis(1,1-dimethylethyl)  63980 000096-76-4 81
+ 
+ 40  26.890  0.98 C:\Database\NIST08.L
+                 Cyclopropaneoctanoic acid, 2-hexyl 122852 010152-61-1 95
+                 -, methyl ester
+                 cis-10-Heptadecenoic acid, methyl  122826 1000333-62-1 91
+                 ester
+                 Methyl 9,10-methylene-hexadecanoat 122815 1000336-51-3 91
+ 
+ 41  27.044  0.17 C:\Database\NIST08.L
+                 cis-10-Heptadecenoic acid, methyl  122826 1000333-62-1 98
+                 ester
+                 Methyl 8-heptadecenoate            122789 1000336-36-4 90
+                 Methyl 9,10-methylene-hexadecanoat 122815 1000336-51-3 60
+ 
+ 42  27.392  8.91 C:\Database\NIST08.L
+                 Octadecanoic acid, methyl ester    135381 000112-61-8 98
+                 Octadecanoic acid, methyl ester    135388 000112-61-8 98
+                 Octadecanoic acid, methyl ester    135390 000112-61-8 98
+ 
+ 43  27.816  0.08 C:\Database\NIST08.L
+                 9-Octadecenoic acid (Z)-, methyl e 133717 000112-62-9 99
+                 ster
+                 11-Octadecenoic acid, methyl ester 133708 052380-33-3 98
+                 9-Octadecenoic acid, methyl ester, 133723 001937-62-8 97
+                  (E)-
+ 
+ 44  27.947  0.14 C:\Database\NIST08.L
+                 9-Octadecenoic acid, methyl ester, 133720 001937-62-8 87
+                  (E)-
+                 8-Octadecenoic acid, methyl ester, 133719 026528-50-7 87
+                  (E)-
+                 12-Octadecenoic acid, methyl ester 133701 056554-46-2 87
+ 
+ 45  28.053  7.78 C:\Database\NIST08.L
+                 9-Octadecenoic acid (Z)-, methyl e 133716 000112-62-9 99
+                 ster
+                 9-Octadecenoic acid, methyl ester  133691 002462-84-2 99
+                 8-Octadecenoic acid, methyl ester  133689 002345-29-1 99
+ 
+ 46  28.214  0.51 C:\Database\wiley7n.l
+                 9,10-DIBUTYL-9,10-DIHYDRO-ANTHRACE 241086 047205-57-2 47
+                 NE $$ Anthracene, 9,10-dibutyl-9,1
+                 0-dihydro- $$ 9,10-Dibutyl-9,10-di
+                 hydroanthracene
+                 2,3-Dihydrophenanthro[9,10-d]oxazo 166525 000000-00-0 47
+                 l-2-one
+                 2-methyl-3-(2-methoxyphenyl)-4(3H) 208202 000000-00-0 45
+                 -quinazolinone
+ 
+ 47  28.413  0.10 C:\Database\NIST08.L
+                 Nonadecanoic acid, methyl ester    145987 001731-94-8 95
+                 Nonadecanoic acid, methyl ester    145989 001731-94-8 93
+                 Nonadecanoic acid, methyl ester    145984 001731-94-8 91
+ 
+ 48  28.794  0.04 C:\Database\wiley7n.l
+                 Cis-3-methyl-endo-tricyclo[5.2.1.0  47451 000000-00-0 46
+                 (2.6)]decane
+                 O-DEUTEROBENZYL ALCOHOL             11386 000000-00-0 46
+                 Tricyclo[4.4.0.0(2,8)]decan-5-ol    50290 000000-00-0 38
+ 
+ 49  29.013 26.88 C:\Database\NIST08.L
+                 cis-10-Nonadecenoic acid, methyl e 144409 1000333-64-4 91
+                 ster
+                 Cyclopropaneoctanoic acid, 2-octyl 144428 010152-62-2 91
+                 -, methyl ester
+                 9-Octadecenoic acid (Z)-, methyl e 133716 000112-62-9 90
+                 ster
+ 
+ 50  29.275  1.27 C:\Database\NIST08.L
+                 Nicotinyl Alcohol                    5501 000100-55-0 97
+                 Nicotinyl Alcohol                    5502 000100-55-0 94
+                 4-Pyridinemethanol                   5504 000586-95-8 93
+ 
+ 51  29.886  0.11 C:\Database\NIST08.L
+                 1H-Pyrrole-2-carboxaldehyde, 1-met   5540 001192-58-1 87
+                 hyl-
+                 Phenol, 3-amino-                     5493 000591-27-5 76
+                 Nicotinyl Alcohol                    5502 000100-55-0 72
+ 
+ 52  29.949  0.10 C:\Database\NIST08.L
+                 Nicotinyl Alcohol                    5501 000100-55-0 91
+                 3-Pyridinol, 6-methyl-               5515 001121-78-4 76
+                 1,3-Benzenediamine                   5253 000108-45-2 76
+ 
+ 53  30.425  0.10 C:\Database\wiley7n.l
+                 (2E,4S)-2,4-Dimethyl-2-decen-1-ol   92866 000000-00-0 27
+                 1,5-Hexadiene-3-carboxylic acid, 1  92327 000000-00-0 22
+                 -methoxy-5-methyl-, methyl ester, 
+                 (Z)-
+                 Benzenamine, 2,4-difluoro- (CAS) $  25398 000367-25-9 22
+                 $ 2,4-Difluoroaniline $$ Aniline, 
+                 2,4-difluoro- $$ 2,4-Difluroanilin
+ 
+ 54  30.612  0.10 C:\Database\wiley7n.l
+                 4-Pyridinemethanol $$ .gamma.-Pico  11748 000586-95-8 50
+                 lyl alcohol $$ 4-(Hydroxymethyl)py
+                 ridine $$ 4-Pyridylcarbinol $$ 4-P
+                 yridylmethanol $$ Pyridine-4-metha
+                 nol $$ 4-(Hydroxymethyl)pyridone
+                 1-1-D2-ETHYL-2-PYRIDTHIONE          34718 053966-47-5 49
+                 2-1-D2-ETHYLTHIO-PYRIDINE           34737 053966-49-7 49
+ 
+ 55  30.758  0.09 C:\Database\NIST08.L
+                 Diethyl Phthalate                   75932 000084-66-2 86
+                 Diethyl Phthalate                   75930 000084-66-2 58
+                 Phthalic acid, monoamide, N-methyl 123523 1000322-83-8 58
+                 -N-phenyl-, ethyl ester
+ 
+ 56  31.285  0.14 C:\Database\NIST08.L
+                 Benzenepropanoic acid, 3,5-bis(1,1 130696 006386-38-5 86
+                 -dimethylethyl)-4-hydroxy-, methyl
+                  ester
+                 3,5-Di-tert-butyl-4-trimethylsilox 130710 018510-49-1 46
+                 ytoluene
+                 2-Phosphabicyclo[3.1.0]hex-3-ene,  130825 1000161-75-2 37
+                 2,6,6-trimethyl-3,4-diphenyl-
+ 
+ 57  32.964  0.12 C:\Database\wiley7n.l
+                 Spiro[2.4]heptane, 4-methylene- $$  11504 024308-54-1 43
+                  4-Methylenespiro[2.4]heptane
+                 4-Pyridinemethanol $$ .gamma.-Pico  11748 000586-95-8 38
+                 lyl alcohol $$ 4-(Hydroxymethyl)py
+                 ridine $$ 4-Pyridylcarbinol $$ 4-P
+                 yridylmethanol $$ Pyridine-4-metha
+                 nol $$ 4-(Hydroxymethyl)pyridone
+                 3-Pyridinemethanol (CAS) $$ Ronico  11747 000100-55-0 30
+                 l $$ RO-1-5155 $$ Nu-2121 $$ Ronia
+                 col $$ Nicotinyl alcohol $$ 3-Pyri
+                 dylmethanol $$ Nicotinic alcohol $
+                 $ 3-Pyridylcarbinol $$ Pyridyl-3-c
+                 arbinol $$ Pyridyl-3-methanol $$ P
+                 yridine-3-carbinol $$ 3-Pyridinylm
+                 ethanol $$ .beta.
+ 
+ 58  33.506  0.10 C:\Database\wiley7n.l
+                 Diethyl phenyl orthoformate $$ Ben 109221 014444-77-0 12
+                 zene, (diethoxymethoxy)-
+                 Methyl 3-hydroxydodecanoate        159653 072864-23-4 10
+                 HEXYL-2-METHYLBUTYRATE              95679 010032-15-2 10
+ 
+ 59  33.864  0.55 C:\Database\NIST08.L
+                 1,2-Benzenedicarboxylic acid, buty 119605 017851-53-5 87
+                 l 2-methylpropyl ester
+                 Dibutyl phthalate                  119538 000084-74-2 83
+                 1,2-Benzenedicarboxylic acid, bis( 119603 000084-69-5 78
+                 2-methylpropyl) ester
+ 
+ 60  34.512  0.07 C:\Database\wiley7n.l
+                 Hexacosanoic acid, methyl ester    337821 005802-82-4 53
+                 Triacontanoic acid, methyl ester   360194 000629-83-4 11
+                 Cyclopentanetridecanoic acid, meth 245533 024828-61-3 11
+                 yl ester $$ Methyl dihydrochaulmoo
+                 grate
+ 
+ 61  35.883  0.14 C:\Database\wiley7n.l
+                 Methyl 3-(((methylsulphonyl)thio)a 172762 076078-82-5 50
+                 cetyl)propanoate
+                 4-Heptanol, 4-ethyl-2,6-dimethyl-   76873 054460-99-0 47
+                 2-Isopropyl-3-methoxy-cyclopropane  57561 000000-00-0 47
+                 -carboxylic acid
+ 
+ 62  38.284  1.10 C:\Database\wiley7n.l
+                 BICYCLO[2.2.1]HEPTAN-2-CARBONSAEUR  52363 000000-00-0 35
+                 E, 2-METHYL-
+                 9-Hexadecenoic acid, methyl ester, 211105 001120-25-8 35
+                  (Z)-
+                 (1R,2S)-2-(Hydroxmethyl)-1-(methox  26215 000000-00-0 35
+                 ycarbonyl)cyclopropane
+ 
+ 63  39.138  0.12 C:\Database\NIST08.L
+                 Pyridine, 4,4'-(1,2-ethanediyl)bis  47461 004916-57-8 87
+                 Bis(3-pyridyl)methyl disulfide      95933 1000306-85-1 78
+                 Pyridine, 4,4'-(1,2-ethanediyl)bis  47458 004916-57-8 78
+ 
+ 64  39.930  0.07 C:\Database\wiley7n.l
+                 trans-1,3-Dideuterio-1,3-Cyclohexa  29480 070925-21-2 35
+                 nedicarbonitrile $$ 1,3-Cyclohexan
+                 e-1,3-d2-dicarbonitrile, trans- (C
+                 AS)
+                 Pyrazine, methoxy- (CAS) $$ 2-Meth  11955 003149-28-8 25
+                 oxypyrazine $$ Methoxypyrazine
+                 Pyrazine, methoxy-, 1-oxide         22114 032046-05-2 22
+ 
+ 65  41.375  2.20 C:\Database\wiley7n.l
+                 Vouacapenic acid $$ Phenanthro[3,2 267442 019941-59-4 14
+                 -b]furan-4-carboxylic acid, 1,2,3,
+                 4,4a,5,6,6a,7,11,11a,11b-dodecahyd
+                 ro-4,7,11b-trimethyl-, [4S-(4.alph
+                 a.,4a.beta.,6a.alpha.,7.beta.,11a.
+                 beta.,11b.alpha.)]- (CAS) $$ Cassa
+                 -12,15-dien-19-oic acid, 12,16-epo
+                 xy- $$ Phenanthro
+                 Phenanthro[3,2-b]furan-4-carboxyli 267443 019941-61-8 10
+                 c acid, 1,2,3,4,4a,5,6,6a,7,11,11a
+                 ,11b-dodecahydro-4,7,11b-trimethyl
+                 -, [4R-(4.alpha.,4a.alpha.,6a.beta
+                 .,7.alpha.,11a.alpha.,11b.beta.)]-
+                  $$ Phenanthro[3,2-b]furan-4-carbo
+                 xylic acid, 1,2,3,4,4a.beta.,5,6,6
+                 a.alpha.,7,11,11a
+                 2-Propyn-1-one, 1-(2-thienyl)-, (2 266601 056588-20-6  9
+                 ,4-dinitrophenyl)hydrazone
+ 
+ 66  42.902  1.56 C:\Database\wiley7n.l
+                 Methyl ester of 4-methyl-4-hydroxy  75985 085977-95-3 25
+                 cyclohexanecarboxylic acid (isomer
+                  A) $$ Cyclohexanecarboxylic acid,
+                  4-hydroxy-4-methyl-, methyl ester
+                 , trans- (CAS)
+                 1,1'-Bicyclopentyl, 2-hexadecyl- ( 308302 055334-11-7 22
+                 CAS) $$ 1-CYCLOPENTYL-2-HEXADECYLC
+                 YCLOPENTANE $$ 1-Cyclopentyl-2-n-h
+                 exadecylcyclopentane $$ 2-HEXADECY
+                 L-BICYCLOPENTYL
+                 trans-2-[(Methoxycarbonyl)methyl]-  95356 000000-00-0 22
+                 1-methylcyclohexan-1-ol
+ 
+ 67  44.559  0.09 C:\Database\wiley7n.l
+                 Xylazine $$ 4H-1,3-Thiazin-2-amine 143918 007361-61-7 41
+                 , N-(2,6-dimethylphenyl)-5,6-dihyd
+                 ro- $$ 4H-1,3-Thiazine, 5,6-dihydr
+                 o-2-(2,6-xylidino)- $$ Bayer 1470 
+                 $$ BAY 1470 $$ Rompun $$ Xylazin $
+                 $ BAY VA 1470 $$ 5,6-Dihydro-2-(2,
+                 6-xylidino)-4H-1,3-thiazine $$ 2-(
+                 2,6-Dimethylanili
+                 3,5-Cyclohexadiene-1,2-dione, 3,5- 144350 003383-21-9 35
+                 bis(1,1-dimethylethyl)- $$ o-Benzo
+                 quinone, 3,5-di-tert-butyl- $$ 3,5
+                 -di-tert-Butyl-ortho-benzoquinone 
+                 $$ 3,5-di-tert-Butyl-o-benzoquinon
+                 e $$ 3,5-di-t-Butyl-o-benzoquinone
+                  $$ 3,5-Di-tert-butyl-1,2-benzoqui
+                 none $$ 3,5-Di-te
+                 1-HYDROXY-2-(5-METHYL-3-ISOXAZOLYL 143650 068576-19-2 30
+                 )-4-ACETYL-5-METHYLPYRROLE $$ Etha
+                 none, 1-[1-hydroxy-2-methyl-5-(5-m
+                 ethyl-3-isoxazolyl)-1H-pyrrol-3-yl
+                 ]- (CAS)
+ 
+ 68  48.010  0.98 C:\Database\wiley7n.l
+                 Mixture of 3-cyano-18(19)-norabiet 224795 080114-71-2  9
+                 a-2,8,11,13-tetraene and 3-cyano-1
+                 8(19)-norabieta-3,8,11,13-tetraene
+                  $$ 2-Phenanthrenecarbonitrile, 1,
+                 4,4a,9,10,10a-hexahydro-1,4a-dimet
+                 hyl-7-(1-methylethyl)- (CAS)
+                 erythro-.alpha.-(4-Phenylpiridin-2 328554 088131-91-3  4
+                 (E)-yl)benzyl 2,2-diethylbutanoate
+                  $$ Butanoic acid, 2,2-diethyl-, p
+                 henyl(4-phenyl-2-piperidinyl)methy
+                 l ester, [2.alpha.(S*),4.alpha.]- 
+                 (CAS) $$ .alpha.(4-Phenylpiperidin
+                 -2(a)-yl)benzyl 2,2-diethylbutania
+                 te $$ .alpha.(4-P
+                 Phosphoryl chloride (CAS) $$ Phosp  50575 010025-87-3  4
+                 horous oxychloride $$ Phosphorus o
+                 xychloride $$ Phosphoryl trichlori
+                 de $$ Phosphoric trichloride $$ Tr
+                 ichlorophosphine oxide $$ Phosphor
+                 us oxytrichloride $$ Phosphoric ch
+                 loride $$ Trichlorophosphorus oxid
+                 e $$ Phosphorus o
+ 
+ 69  48.212  0.42 C:\Database\wiley7n.l
+                 Cinnamyl 4,6-O-Ethylidene-2,3-di-O 335666 097337-68-3  4
+                 -acetylglucopyranoside
+                 Glycine, N-acetyl- (CAS) $$ Acetur  17156 000543-24-8  3
+                 ic acid $$ Acetylglycine $$ N-Acet
+                 ylglycine $$ Acetylglycocoll $$ Ac
+                 etamidoacetic acid $$ Acetylaminoa
+                 cetic acid $$ Ethanoylaminoethanoi
+                 c acid $$ CH3CONHCH2COOH
+                 5-O-[(1,1-Dimethylethyl)dimethylsi 251561 000000-00-0  1
+                 lyl]-2,3-O-(1-methylethylidene)-D-
+                 ribofuranose
+ 
+ 70  48.303  0.88 C:\Database\wiley7n.l
+                 Glycine, N-acetyl- (CAS) $$ Acetur  17156 000543-24-8  3
+                 ic acid $$ Acetylglycine $$ N-Acet
+                 ylglycine $$ Acetylglycocoll $$ Ac
+                 etamidoacetic acid $$ Acetylaminoa
+                 cetic acid $$ Ethanoylaminoethanoi
+                 c acid $$ CH3CONHCH2COOH
+                 Phosphoryl chloride (CAS) $$ Phosp  50575 010025-87-3  2
+                 horous oxychloride $$ Phosphorus o
+                 xychloride $$ Phosphoryl trichlori
+                 de $$ Phosphoric trichloride $$ Tr
+                 ichlorophosphine oxide $$ Phosphor
+                 us oxytrichloride $$ Phosphoric ch
+                 loride $$ Trichlorophosphorus oxid
+                 e $$ Phosphorus o
+                 Carbon Tetrachloride                48170 000056-23-5  1
+ 
+
+HP-88-2022-METHOD_SUP37.M Wed Feb 22 17:40:49 2023   

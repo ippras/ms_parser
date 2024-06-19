@@ -1,2 +1,3 @@
-# ms
-Agilent (`.CH`, `.D`, `.MS`) files parser
+# MS parser
+
+Agilent (`.CH`, `.D`, `.MS`) files parser.
