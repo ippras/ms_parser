@@ -119,36 +119,36 @@ impl Reader {
         )?)
     }
 
-    pub fn parse(self) -> Result<Parsed> {
-        let (_, spectrums) = count(
-            map_res(Directory::parse, |directory| {
-                let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
-                let mut signal_range = f32::MAX..=f32::MIN;
-                for peak in &spectral.peaks {
-                    let signal = peak.signal();
-                    signal_range =
-                        signal_range.start().min(signal)..=signal_range.end().max(signal);
-                }
-                Ok(Spectrum {
-                    retention_time: Time::new::<millisecond>(spectral.retention_time as _),
-                    base_peak: spectral.base_peak,
-                    peaks: spectral.peaks,
-                    signal_range,
-                })
-            }),
-            self.header.data_record_count,
-        )(&self.input[self.header.directory_offset..])?;
-        Ok(Parsed {
-            retention_time_range: Time::new::<millisecond>(
-                *self.header.retention_time_range.start() as _,
-            )
-                ..=Time::new::<millisecond>(*self.header.retention_time_range.end() as _),
-            signal_range: self.header.signal_range,
-            spectrums,
-        })
-    }
+    // pub fn parse(self) -> Result<Parsed> {
+    //     let (_, spectrums) = count(
+    //         map_res(Directory::parse, |directory| {
+    //             let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
+    //             let mut signal_range = f32::MAX..=f32::MIN;
+    //             for peak in &spectral.peaks {
+    //                 let signal = peak.signal();
+    //                 signal_range =
+    //                     signal_range.start().min(signal)..=signal_range.end().max(signal);
+    //             }
+    //             Ok(Spectrum {
+    //                 retention_time: Time::new::<millisecond>(spectral.retention_time as _),
+    //                 base_peak: spectral.base_peak,
+    //                 peaks: spectral.peaks,
+    //                 signal_range,
+    //             })
+    //         }),
+    //         self.header.data_record_count,
+    //     )(&self.input[self.header.directory_offset..])?;
+    //     Ok(Parsed {
+    //         retention_time_range: Time::new::<millisecond>(
+    //             *self.header.retention_time_range.start() as _,
+    //         )
+    //             ..=Time::new::<millisecond>(*self.header.retention_time_range.end() as _),
+    //         signal_range: self.header.signal_range,
+    //         spectrums,
+    //     })
+    // }
 
-    pub fn parse_data_frame(self) -> Result<DataFrame> {
+    pub fn parse(self) -> Result<DataFrame> {
         let mut retention_time = Vec::new();
         let mut mass_to_charge = Vec::new();
         let mut signal = Vec::new();

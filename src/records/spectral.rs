@@ -29,7 +29,9 @@ fn unpack(packed: u16) -> u32 {
 pub struct Spectral {
     /// Retention time ms
     pub(crate) retention_time: i32,
-    pub(crate) base_peak: Peak,
+    /// Peak with max abundance from the peaks
+    pub(crate) _base_peak: Peak,
+    /// Peaks for the retention time
     pub(crate) peaks: Vec<Peak>,
 }
 
@@ -38,17 +40,11 @@ impl Spectral {
         self.retention_time
     }
 
-    pub fn base_peak(&self) -> Peak {
-        self.base_peak
-    }
-
     pub fn peaks(&self) -> &[Peak] {
         &self.peaks
     }
 }
 
-// 1001_0100_0111_1011_1110 (608190)
-// 1110_0010_0101_0001 (57937)
 impl Spectral {
     pub fn parse(input: &[u8]) -> Result<(&[u8], Self)> {
         assert!(input.len() > 18);
@@ -59,7 +55,7 @@ impl Spectral {
         let (input, _status_word) = be_i16(input)?;
         // Peaks
         let (input, number_of_peaks) = be_i16(input)?;
-        let (input, base_peak) = Peak::parse(input)?;
+        let (input, _base_peak) = Peak::parse(input)?;
         assert!(input.len() > 4 * number_of_peaks as usize);
         let (input, mut peaks) = count(Peak::parse, number_of_peaks as _)(input)?;
         peaks.reverse();
@@ -67,7 +63,7 @@ impl Spectral {
             input,
             Self {
                 retention_time,
-                base_peak,
+                _base_peak,
                 peaks,
             },
         ))
@@ -77,7 +73,7 @@ impl Spectral {
 impl Display for Spectral {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         f.debug_struct("Spectral")
-            .field("base", &self.base_peak)
+            .field("retention_time", &self.retention_time)
             .field("peaks", &format_args!("{}", Preview(&self.peaks)))
             .finish()
     }
