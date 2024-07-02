@@ -12,6 +12,7 @@ struct Args {
     path: PathBuf,
 }
 
+// cargo run --bin=display -- --path=df.bin
 pub fn main() -> Result<()> {
     env::set_var("POLARS_FMT_MAX_COLS", "256");
     env::set_var("POLARS_FMT_MAX_ROWS", "256");

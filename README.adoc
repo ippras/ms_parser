@@ -1,6 +1,8 @@
-# MS parser
-067542978W
+= MS parser
+
 Agilent (`.CH`, `.D`, `.MS`) files parser.
+
+cargo run --example=convert -- --path="input/Amal/60/Flow 1 ml-min/SUP37-60C-3C-MIN_30 PSI-1.D/DATA.MS"
 
 // 0.10
 // 0.05

@@ -1,14 +1,12 @@
 use anyhow::Result;
 use clap::Parser;
 use ms_parser::Reader;
-use polars::prelude::*;
 use ron::ser::PrettyConfig;
 use std::{env, fs, path::PathBuf};
 
 #[derive(Parser, Debug)]
 #[command(version, about)]
 struct Args {
-    /// Name of the person to greet
     #[arg(short, long)]
     path: PathBuf,
 }
