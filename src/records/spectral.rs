@@ -109,7 +109,7 @@ impl Peak {
 
 impl Parse for Peak {
     fn parse(input: &[u8]) -> Result<(&[u8], Self)> {
-        let (input, (mass_to_charge, abundance)) = pair(be_u16, be_i16)(input)?;
+        let (input, (mass_to_charge, abundance)) = pair(be_u16, be_u16)(input)?;
         Ok((
             input,
             Self {
