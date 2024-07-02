@@ -161,7 +161,7 @@ impl Reader {
                     spectral.peaks.iter().map(|peak| peak.mass_to_charge()),
                 ));
                 signal.push(Series::from_iter(
-                    spectral.peaks.iter().map(|peak| peak.signal()),
+                    spectral.peaks.iter().map(|peak| peak.abundance),
                 ));
                 Ok(())
             }),
@@ -200,8 +200,8 @@ impl Reader {
         //         ..=retention_time_range["S.MAX"].get(0)?.try_extract()?
         // );
         Ok(df! {
-            "Retention time" => retention_time,
-            "Mass to charge" => mass_to_charge,
+            "RetentionTime" => retention_time,
+            "MassToCharge" => mass_to_charge,
             "Signal" => signal,
         }?)
     }

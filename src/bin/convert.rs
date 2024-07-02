@@ -1,6 +1,6 @@
 use anyhow::Result;
 use clap::Parser;
-use ms::Reader;
+use ms_parser::Reader;
 use polars::prelude::*;
 use ron::ser::PrettyConfig;
 use std::{env, fs, path::PathBuf};
@@ -13,6 +13,8 @@ struct Args {
     path: PathBuf,
 }
 
+// cargo run --bin=convert -- --path="input/12_FAMES_01.D/DATA.MS"
+// cargo run --bin=convert -- --path="input/Amal/60/Flow 1 ml-min/SUP37-60C-3C-MIN_30 PSI-1.D/DATA.MS"
 pub fn main() -> Result<()> {
     env::set_var("POLARS_FMT_MAX_COLS", "256");
     env::set_var("POLARS_FMT_MAX_ROWS", "256");
@@ -32,7 +34,7 @@ pub fn main() -> Result<()> {
     // println!("{parse}");
     let data_frame = reader
         .parse()?
-        .sort(["Retention time"], Default::default())?;
+        .sort(["RetentionTime"], Default::default())?;
     // let contents = ron::ser::to_string_pretty(&data_frame, PrettyConfig::default())?;
     // fs::write("df.ron", contents)?;
     // let contents = ron::ser::to_string_pretty(&data_frame, PrettyConfig::default())?;

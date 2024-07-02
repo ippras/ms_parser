@@ -93,17 +93,17 @@ impl Display for Spectral {
 /// is represented by a packed i16 value.
 #[derive(Clone, Copy, Debug, Default)]
 pub struct Peak {
-    mass_to_charge: f32,
-    abundance: f32,
+    pub(crate) mass_to_charge: u16,
+    pub(crate) abundance: u16,
 }
 
 impl Peak {
     pub fn mass_to_charge(&self) -> f32 {
-        self.mass_to_charge
+        self.mass_to_charge as f32 / MASS_TO_CHARGE_FACTOR
     }
 
-    pub fn signal(&self) -> f32 {
-        self.abundance
+    pub fn signal(&self) -> u32 {
+        unpack(self.abundance)
     }
 }
 
@@ -113,8 +113,10 @@ impl Parse for Peak {
         Ok((
             input,
             Self {
-                mass_to_charge: mass_to_charge as f32 / MASS_TO_CHARGE_FACTOR,
-                abundance: abundance as _,
+                mass_to_charge,
+                abundance,
+                // mass_to_charge: mass_to_charge as f32 / MASS_TO_CHARGE_FACTOR,
+                // abundance: abundance as _,
                 // TODO: OpenChrome does not unpack abundance
                 // abundance: unpack(abundance as _) as _,
             },

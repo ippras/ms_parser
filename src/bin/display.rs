@@ -1,6 +1,6 @@
 use anyhow::Result;
 use clap::Parser;
-use ms::Reader;
+use ms_parser::Reader;
 use polars::prelude::*;
 use ron::ser::PrettyConfig;
 use std::{env, ffi::OsStr, fs, path::PathBuf};
