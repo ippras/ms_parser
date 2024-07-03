@@ -102,7 +102,13 @@ impl Peak {
         self.mass_to_charge as f32 / MASS_TO_CHARGE_FACTOR
     }
 
-    pub fn signal(&self) -> u32 {
+    /// Packed signal
+    pub fn packed_signal(&self) -> u16 {
+        self.abundance
+    }
+
+    /// Unpacked signal
+    pub fn unpacked_signal(&self) -> u32 {
         unpack(self.abundance)
     }
 }
@@ -128,7 +134,7 @@ impl Display for Peak {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         f.debug_struct("Peak")
             .field("mass_to_charge", &self.mass_to_charge())
-            .field("abundance", &self.signal())
+            .field("abundance", &self.abundance)
             .finish()
     }
 }

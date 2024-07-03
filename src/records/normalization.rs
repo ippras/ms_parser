@@ -1,8 +1,5 @@
-use crate::{
-    error::{Error, Result},
-    parse::Parse,
-};
-use nom::{number::complete::be_f32, Err};
+use crate::{error::Result, parse::Parse};
+use nom::number::complete::be_f32;
 use std::fmt::{self, Display, Formatter};
 
 pub const NORMALIZATION_SIZE: usize = 24;
@@ -44,12 +41,3 @@ impl Display for Normalization {
             .finish()
     }
 }
-
-// impl TryFrom<&[u8]> for Normalization {
-//     type Error = Error;
-
-//     fn try_from(value: &[u8]) -> Result<Self, Self::Error> {
-//         let (_, normalization) = Normalization::parse(value)?;
-//         Ok(normalization)
-//     }
-// }

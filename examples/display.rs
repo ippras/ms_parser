@@ -1,8 +1,6 @@
 use anyhow::Result;
 use clap::Parser;
-use ms_parser::Reader;
 use polars::prelude::*;
-use ron::ser::PrettyConfig;
 use std::{env, ffi::OsStr, fs, path::PathBuf};
 
 #[derive(Parser, Debug)]
@@ -12,7 +10,6 @@ struct Args {
     path: PathBuf,
 }
 
-// cargo run --bin=display -- --path=df.bin
 pub fn main() -> Result<()> {
     env::set_var("POLARS_FMT_MAX_COLS", "256");
     env::set_var("POLARS_FMT_MAX_ROWS", "256");

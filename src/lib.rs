@@ -8,54 +8,19 @@
 
 #![feature(maybe_uninit_array_assume_init)]
 #![feature(maybe_uninit_uninit_array)]
-#![feature(sort_floats)]
 
 pub use self::records::{Directory, Header, Normalization, Spectral};
 
 use self::{
     parse::Parse,
-    records::{Peak, DIRECTORY_SIZE, HEADER_SIZE, NORMALIZATION_SIZE},
+    records::{DIRECTORY_SIZE, HEADER_SIZE},
 };
 use anyhow::{ensure, Ok, Result};
-use indexmap::{map::Entry, IndexMap, IndexSet};
-use itertools::Itertools;
-use nom::{
-    bytes::complete::take,
-    combinator::{map, map_res},
-    multi::{count, length_data},
-    number::complete::{be_i16, be_i32, be_u16, u8},
-    Err,
-};
-use ordered_float::{NotNan, OrderedFloat};
-use polars::prelude::*;
-use std::{
-    borrow::Borrow,
-    collections::{BTreeSet, HashMap},
-    fmt::{self, Display, Formatter},
-    fs::read,
-    io::Cursor,
-    mem::MaybeUninit,
-    ops::{Deref, Index, Range, RangeInclusive},
-    path::Path,
-    str,
-};
-use uom::{
-    fmt::DisplayStyle,
-    si::{
-        f32::{Ratio, Time},
-        ratio::ratio,
-        time::{millisecond, minute, second},
-    },
-};
-use utils::{nom::array, Preview};
+use nom::{combinator::map_res, multi::count};
+use std::{fs::read, path::Path};
+use utils::nom::array;
 
 pub const NORMALIZATIONS_COUNT: usize = 10;
-
-// fn str<const SIZE: usize>(input: &[u8]) -> Result<&[u8], String> {
-//     let (input, output) = map_res(length_data(u8), |bytes| str::from_utf8(bytes))(input)?;
-//     let (input, _) = take(SIZE - output.len())(input)?;
-//     Ok((input, output.trim().to_owned()))
-// }
 
 /// Reader
 pub struct Reader {
@@ -87,22 +52,6 @@ impl Reader {
         Ok(normalizations)
     }
 
-    // pub fn d<T>(&self, f: impl Fn(Directory) -> T) -> Result<Vec<T>> {
-    //     Ok(
-    //         count(map(Directory::parse, f), self.header.data_record_count)(
-    //             &self.input[self.header.directory_offset..],
-    //         )?
-    //         .1,
-    //     )
-    // }
-
-    // pub fn s<T>(&self, f: impl Fn(Spectral) -> T) -> Result<Vec<T>> {
-    //     self.d(|directory| {
-    //         let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
-    //         f(spectral)
-    //     })
-    // }
-
     /// Directories
     pub fn directories(&self) -> Result<Vec<Directory>> {
         let (_, directories) = count(Directory::parse, self.header.data_record_count)(
@@ -119,6 +68,19 @@ impl Reader {
         )?)
     }
 
+    /// Spectrals
+    pub fn spectrals(&self) -> Result<Vec<Spectral>> {
+        let (_, spectrals) = count(
+            map_res(Directory::parse, |directory| {
+                let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
+                assert_eq!(directory.retention_time, spectral.retention_time);
+                Ok(spectral)
+            }),
+            self.header.data_record_count,
+        )(&self.input[self.header.directory_offset..])?;
+        Ok(spectrals)
+    }
+
     /// Spectral
     pub fn spectral(&self, index: usize) -> Result<Spectral> {
         let (_, directory) = self.directory(index)?;
@@ -126,93 +88,103 @@ impl Reader {
         Ok(spectral)
     }
 
-    /// Times
-    pub fn times(&self) -> Result<Vec<Time>> {
-        let (_, times) = count(
-            map(Directory::parse, |directory| {
-                Time::new::<millisecond>(directory.retention_time() as _)
-            }),
-            self.header.data_record_count,
-        )(&self.input[self.header.directory_offset..])?;
-        Ok(times)
-    }
+    // pub fn parse(self) -> Result<DataFrame> {
+    //     let mut retention_time = Vec::new();
+    //     let mut mass_to_charge = Vec::new();
+    //     let mut signal = Vec::new();
+    //     for spectral in self.spectrals()? {
+    //         retention_time.push(spectral.retention_time);
+    //         mass_to_charge.push(Series::from_iter(
+    //             spectral.peaks.iter().map(|peak| peak.mass_to_charge()),
+    //         ));
+    //         signal.push(Series::from_iter(
+    //             spectral.peaks.iter().map(|peak| Some(peak.abundance)),
+    //         ));
+    //     }
+    //     Ok(df! {
+    //         "RetentionTime" => retention_time,
+    //         "MassToCharge" => mass_to_charge,
+    //         "Signal" => signal,
+    //     }?)
+    // }
 
-    pub fn parse_new(self) -> Result<DataFrame> {
-        let mut retention_time = Vec::new();
-        let mut mass_to_charge = Vec::new();
-        let mut signal = Vec::new();
+    // pub fn parse(self) -> Result<DataFrame> {
+    //     let mut retention_time = Vec::new();
+    //     let mut mass_to_charge = Vec::new();
+    //     let mut signal = Vec::new();
 
-        let mut input = &self.input[self.header.directory_offset..];
-        for _ in 0..self.header.data_record_count {
-            let (input, directory) = Directory::parse(input)?;
-            let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
-            assert_eq!(directory.retention_time, spectral.retention_time);
-            retention_time.push(spectral.retention_time);
-            mass_to_charge.push(Series::from_iter(
-                spectral.peaks.iter().map(|peak| peak.mass_to_charge()),
-            ));
-            signal.push(Series::from_iter(
-                spectral.peaks.iter().map(|peak| Some(peak.abundance)),
-            ));
-        }
-        // let mut retention_time = Vec::new();
-        // let mut mass_to_charge = Vec::new();
-        // let mut signal = Vec::new();
-        Ok(df! {
-            "RetentionTime" => retention_time,
-            "MassToCharge" => mass_to_charge,
-            "Signal" => signal,
-        }?)
+    //     let mut input = &self.input[self.header.directory_offset..];
+    //     for _ in 0..self.header.data_record_count {
+    //         let (output, directory) = Directory::parse(input)?;
+    //         let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
+    //         assert_eq!(directory.retention_time, spectral.retention_time);
+    //         retention_time.push(spectral.retention_time);
+    //         mass_to_charge.push(Series::from_iter(
+    //             spectral.peaks.iter().map(|peak| peak.mass_to_charge()),
+    //         ));
+    //         signal.push(Series::from_iter(
+    //             spectral.peaks.iter().map(|peak| Some(peak.abundance)),
+    //         ));
+    //         input = output;
+    //     }
+    //     // let mut retention_time = Vec::new();
+    //     // let mut mass_to_charge = Vec::new();
+    //     // let mut signal = Vec::new();
+    //     Ok(df! {
+    //         "RetentionTime" => retention_time,
+    //         "MassToCharge" => mass_to_charge,
+    //         "Signal" => signal,
+    //     }?)
 
-        // let (_, series) = count(
-        //     map_res(Directory::parse, |directory| {
-        //         let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
-        //         assert_eq!(directory.retention_time, spectral.retention_time);
-        //         retention_time.push(spectral.retention_time);
-        //         mass_to_charge.push(Series::from_iter(
-        //             spectral.peaks.iter().map(|peak| peak.mass_to_charge()),
-        //         ));
-        //         signal.push(Series::from_iter(
-        //             spectral.peaks.iter().map(|peak| peak.abundance),
-        //         ));
-        //         Ok(())
-        //     }),
-        //     self.header.data_record_count,
-        // )(&self.input[self.header.directory_offset..])?;
+    //     // let (_, series) = count(
+    //     //     map_res(Directory::parse, |directory| {
+    //     //         let (_, spectral) = Spectral::parse(&self.input[directory.spectrum_offset..])?;
+    //     //         assert_eq!(directory.retention_time, spectral.retention_time);
+    //     //         retention_time.push(spectral.retention_time);
+    //     //         mass_to_charge.push(Series::from_iter(
+    //     //             spectral.peaks.iter().map(|peak| peak.mass_to_charge()),
+    //     //         ));
+    //     //         signal.push(Series::from_iter(
+    //     //             spectral.peaks.iter().map(|peak| peak.abundance),
+    //     //         ));
+    //     //         Ok(())
+    //     //     }),
+    //     //     self.header.data_record_count,
+    //     // )(&self.input[self.header.directory_offset..])?;
 
-        // let retention_time_range = data_frame
-        //     .clone()
-        //     .lazy()
-        //     .select([
-        //         min("Retention time").alias("RT.MIN"),
-        //         max("Retention time").alias("RT.MAX"),
-        //         min("Signal").alias("S.MIN"),
-        //         max("Signal").alias("S.MAX"),
-        //     ])
-        //     .collect()?;
-        // matches!(
-        //     (
-        //         retention_time_range["RT.MIN"].get(0)?,
-        //         retention_time_range["RT.MAX"].get(0)?
-        //     ),
-        //     (Ok)
-        // );
-        // assert_eq!(
-        //     self.header.retention_time_range,
-        //     retention_time_range["RT.MIN"].get(0)?.try_extract::<f32>()?
-        //         ..=retention_time_range["RT.MAX"].get(0)?.try_extract::<f32>()?
-        // );
-        // assert_eq!(
-        //     self.header.retention_time_range,
-        //     retention_time_range["RT.MIN"].get(0)?.try_extract()?
-        //         ..=retention_time_range["RT.MAX"].get(0)?.try_extract()?
-        // );
-        // assert_eq!(
-        //     self.header.signal_range,
-        //     retention_time_range["S.MIN"].get(0)?.try_extract()?
-        //         ..=retention_time_range["S.MAX"].get(0)?.try_extract()?
-        // );
-    }
+    //     // let retention_time_range = data_frame
+    //     //     .clone()
+    //     //     .lazy()
+    //     //     .select([
+    //     //         min("Retention time").alias("RT.MIN"),
+    //     //         max("Retention time").alias("RT.MAX"),
+    //     //         min("Signal").alias("S.MIN"),
+    //     //         max("Signal").alias("S.MAX"),
+    //     //     ])
+    //     //     .collect()?;
+    //     // matches!(
+    //     //     (
+    //     //         retention_time_range["RT.MIN"].get(0)?,
+    //     //         retention_time_range["RT.MAX"].get(0)?
+    //     //     ),
+    //     //     (Ok)
+    //     // );
+    //     // assert_eq!(
+    //     //     self.header.retention_time_range,
+    //     //     retention_time_range["RT.MIN"].get(0)?.try_extract::<f32>()?
+    //     //         ..=retention_time_range["RT.MAX"].get(0)?.try_extract::<f32>()?
+    //     // );
+    //     // assert_eq!(
+    //     //     self.header.retention_time_range,
+    //     //     retention_time_range["RT.MIN"].get(0)?.try_extract()?
+    //     //         ..=retention_time_range["RT.MAX"].get(0)?.try_extract()?
+    //     // );
+    //     // assert_eq!(
+    //     //     self.header.signal_range,
+    //     //     retention_time_range["S.MIN"].get(0)?.try_extract()?
+    //     //         ..=retention_time_range["S.MAX"].get(0)?.try_extract()?
+    //     // );
+    // }
 }
 
 pub mod records;
@@ -220,17 +192,6 @@ pub mod records;
 mod error;
 mod parse;
 mod utils;
-
-#[test]
-fn test() -> anyhow::Result<()> {
-    let reader = Reader::new("input/7_FAMES_01.D/DATA.MS")?;
-    println!("header: {:#?}", reader.header());
-
-    // let parse = reader.parse()?;
-    // println!("{parse}");
-    let parse = reader.parse_data_frame()?;
-    Ok(())
-}
 
 // pub fn parse(self) -> Result<Parsed> {
 //     let (_, spectrums) = count(
