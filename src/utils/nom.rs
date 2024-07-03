@@ -1,4 +1,4 @@
-use crate::error::Result;
+use crate::{error::Result, Directory, Parse, Spectral};
 use nom::{bytes::complete::take, combinator::map_res, multi::length_data, number::complete::u8};
 use std::{mem::MaybeUninit, str};
 
