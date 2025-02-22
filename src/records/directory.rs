@@ -28,7 +28,7 @@ impl Directory {
         self.retention_time
     }
 
-    pub fn spectrum<'a>(&'a self, input: &'a [u8]) -> Result<(&[u8], Spectral)> {
+    pub fn spectrum<'a>(&'a self, input: &'a [u8]) -> Result<(&'a [u8], Spectral)> {
         Spectral::parse(&input[self.spectrum_offset..])
     }
 

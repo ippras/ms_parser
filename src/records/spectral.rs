@@ -1,6 +1,7 @@
 use super::Parse;
 use crate::{error::Result, utils::Preview};
 use nom::{
+    Parser as _,
     multi::count,
     number::complete::{be_i16, be_i32, be_u16},
     sequence::pair,
@@ -57,7 +58,7 @@ impl Spectral {
         let (input, number_of_peaks) = be_i16(input)?;
         let (input, _base_peak) = Peak::parse(input)?;
         assert!(input.len() > 4 * number_of_peaks as usize);
-        let (input, mut peaks) = count(Peak::parse, number_of_peaks as _)(input)?;
+        let (input, mut peaks) = count(Peak::parse, number_of_peaks as _).parse(input)?;
         peaks.reverse();
         Ok((
             input,
@@ -115,7 +116,7 @@ impl Peak {
 
 impl Parse for Peak {
     fn parse(input: &[u8]) -> Result<(&[u8], Self)> {
-        let (input, (mass_to_charge, abundance)) = pair(be_u16, be_u16)(input)?;
+        let (input, (mass_to_charge, abundance)) = pair(be_u16, be_u16).parse(input)?;
         Ok((
             input,
             Self {

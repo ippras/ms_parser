@@ -1,5 +1,6 @@
 use crate::error::Result;
 use nom::{
+    Parser,
     bytes::complete::take,
     combinator::{map, map_res},
     multi::length_data,
@@ -22,11 +23,11 @@ pub fn array<const LENGTH: usize, O>(
 }
 
 fn str<const SIZE: usize>(input: &[u8]) -> Result<(&[u8], &str)> {
-    let (input, output) = map_res(length_data(u8), |bytes| str::from_utf8(bytes))(input)?;
+    let (input, output) = map_res(length_data(u8), |bytes| str::from_utf8(bytes)).parse(input)?;
     let (input, _) = take(SIZE - output.len())(input)?;
     Ok((input, output.trim()))
 }
 
 pub fn string<const SIZE: usize>(input: &[u8]) -> Result<(&[u8], String)> {
-    map(str::<SIZE>, ToOwned::to_owned)(input)
+    map(str::<SIZE>, ToOwned::to_owned).parse(input)
 }

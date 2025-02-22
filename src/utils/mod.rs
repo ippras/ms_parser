@@ -31,17 +31,17 @@ impl<T: Debug> Debug for Preview<'_, T> {
 impl<T: Display> Display for Preview<'_, T> {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         f.write_str("[")?;
-        match &self.0 {
-            &[] => {}
-            &[entry] => {
+        match self.0 {
+            [] => {}
+            [entry] => {
                 f.write_fmt(format_args!("{entry}"))?;
             }
-            &[first, second] => {
+            [first, second] => {
                 f.write_fmt(format_args!("{first}"))?;
                 f.write_str(", ")?;
                 f.write_fmt(format_args!("{second}"))?;
             }
-            &[first, .., last] => {
+            [first, .., last] => {
                 f.write_fmt(format_args!("{first}"))?;
                 f.write_fmt(format_args!(", ..., "))?;
                 f.write_fmt(format_args!("{last}"))?;
@@ -57,10 +57,10 @@ where
     F: FnMut(&T, &mut Formatter) -> fmt::Result + Clone,
 {
     f.write_str("[")?;
-    match &slice {
-        &[] => {}
-        &[first] => write!(f, "{first}")?,
-        &[first, .., last] => write!(f, "{first}, .., {last}")?,
+    match slice {
+        [] => {}
+        [first] => write!(f, "{first}")?,
+        [first, .., last] => write!(f, "{first}, .., {last}")?,
     }
     f.write_str("]")
 }

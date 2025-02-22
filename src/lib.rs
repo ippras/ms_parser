@@ -15,8 +15,8 @@ use self::{
     parse::Parse,
     records::{DIRECTORY_SIZE, HEADER_SIZE},
 };
-use anyhow::{ensure, Ok, Result};
-use nom::{combinator::map_res, multi::count};
+use anyhow::{Ok, Result, ensure};
+use nom::{Parser, combinator::map_res, multi::count};
 use std::{fs::read, path::Path};
 use utils::nom::array;
 
@@ -54,9 +54,8 @@ impl Reader {
 
     /// Directories
     pub fn directories(&self) -> Result<Vec<Directory>> {
-        let (_, directories) = count(Directory::parse, self.header.data_record_count)(
-            &self.input[self.header.directory_offset..],
-        )?;
+        let (_, directories) = count(Directory::parse, self.header.data_record_count)
+            .parse(&self.input[self.header.directory_offset..])?;
         Ok(directories)
     }
 
@@ -77,7 +76,8 @@ impl Reader {
                 Ok(spectral)
             }),
             self.header.data_record_count,
-        )(&self.input[self.header.directory_offset..])?;
+        )
+        .parse(&self.input[self.header.directory_offset..])?;
         Ok(spectrals)
     }
 

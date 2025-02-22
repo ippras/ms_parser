@@ -11,10 +11,10 @@ struct Args {
 }
 
 pub fn main() -> Result<()> {
-    env::set_var("POLARS_FMT_MAX_COLS", "256");
-    env::set_var("POLARS_FMT_MAX_ROWS", "256");
-    env::set_var("POLARS_FMT_TABLE_CELL_LIST_LEN", "256");
-    env::set_var("POLARS_FMT_STR_LEN", "80");
+    unsafe { env::set_var("POLARS_FMT_MAX_COLS", "256") };
+    unsafe { env::set_var("POLARS_FMT_MAX_ROWS", "256") };
+    unsafe { env::set_var("POLARS_FMT_TABLE_CELL_LIST_LEN", "256") };
+    unsafe { env::set_var("POLARS_FMT_STR_LEN", "80") };
 
     let args = Args::parse();
     let data_frame: DataFrame = match args.path.extension().and_then(OsStr::to_str) {
