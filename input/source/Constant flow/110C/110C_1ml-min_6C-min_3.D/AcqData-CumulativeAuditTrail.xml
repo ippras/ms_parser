@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<AuditTrailDataSet xmlns="http://tempuri.org/AuditTrailDataSet.xsd">
+  <AuditTrailEntry>
+    <ID>0</ID>
+    <ComputerName>AGILENT</ComputerName>
+    <User>system</User>
+    <TimeStamp>2024-09-17T15:32:42.2136062+03:00</TimeStamp>
+    <Comment>Сбор данных был начат</Comment>
+    <Approved>false</Approved>
+  </AuditTrailEntry>
+  <AuditTrailEntry>
+    <ID>1</ID>
+    <ComputerName>AGILENT</ComputerName>
+    <User>system</User>
+    <TimeStamp>2024-09-17T15:58:15.9209485+03:00</TimeStamp>
+    <Comment>Выполнение прервано пользователем: Пользователь нажал кнопку Стоп</Comment>
+    <Approved>false</Approved>
+  </AuditTrailEntry>
+  <AuditTrailEntry>
+    <ID>2</ID>
+    <ComputerName>AGILENT</ComputerName>
+    <User>system</User>
+    <TimeStamp>2024-09-17T15:58:15.9365709+03:00</TimeStamp>
+    <Comment>Данные были собраны и сохранены.</Comment>
+    <Approved>false</Approved>
+  </AuditTrailEntry>
+</AuditTrailDataSet>

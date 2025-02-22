@@ -1,0 +1,22 @@
+STATE:|F60|W12|S10|L50 (auto)|M390|D-1|TY0|RE1|DL1|PS1|RN0|FLC:\NIST08\AMDIS32\ONSITE.MSL|mI0|sH1|dL1|sS0|tH0|rB1
+|HD::|FIC:\USERS\USER\DESKTOP\AMAL\Диплом\Постоянный поток\CONSTANT FLOW\100C\100C_1ML-MIN_1C-MIN_1.D\DATA.MS
+NOISE: K=4.08 %1=6 MinAb=150 LoHi=50:385 Xnz=252 pk/u=0.038 SumAb=3.56e+008 Nulls=1230 %Bad=0 Uncrt=3 S=0
+LAST: |EL60|NC41        
+0 Identified Compounds
+
+
+QA/QC:
+Instrument type: Quadrupole
+Scan Direction High to Low
+Highest m/z detected = 385, high m/z setting = 390
+Background (low vs. high retention time):
+  median low RT S/N=6, high RT S/N=6
+Solvent Tailing (m/z 84). Run begins at 5.84 min. Solvent falls below:
+  S/N=50 before run
+  S/N=20 at 6.55 min.
+  S/N=10 at 9.44 min.
+  S/N=5 at 15.66 min.
+  S/N=2 at 24.11 min.
+  S/N=1 at 24.11 min.
+Column Bleed (m/z 207):
+  median low RT S/N=3, high RT S/N=4

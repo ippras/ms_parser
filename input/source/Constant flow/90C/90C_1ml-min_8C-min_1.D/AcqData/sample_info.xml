@@ -1,0 +1,265 @@
+<SampleInfo>
+  <Version>1.0</Version>
+  <Field>
+    <Name>Dilution</Name>
+    <DisplayName>Dilution</DisplayName>
+    <Value>1</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Inj Vol (µl)</Name>
+    <DisplayName>Inj Vol (µl)</DisplayName>
+    <Value>0</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Wt/Vol</Name>
+    <DisplayName>Wt/Vol</DisplayName>
+    <Value>0</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Sample ID</Name>
+    <DisplayName>Sample ID</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Sample Name</Name>
+    <DisplayName>Sample Name</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Sample Position</Name>
+    <DisplayName>Sample Position</DisplayName>
+    <Value>1</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Sample Type</Name>
+    <DisplayName>Sample Type</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Data File</Name>
+    <DisplayName>Data File</DisplayName>
+    <Value>D:\MassHunter\GCMS\1\data\Amal\Constant flow\90C\90C_1ml-min_8C-min_1.D</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Method</Name>
+    <DisplayName>Method</DisplayName>
+    <Value>D:\MassHunter\GCMS\1\methods\GC_project\1ml-min\90C-1ml-min-8C-min.M</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Override DA Method</Name>
+    <DisplayName>Override DA Method</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Level Name</Name>
+    <DisplayName>Level Name</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Comment</Name>
+    <DisplayName>Comment</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Balance Override</Name>
+    <DisplayName>Balance Override</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Barcode</Name>
+    <DisplayName>Barcode</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Equilib Time (min)</Name>
+    <DisplayName>Equilib Time (min)</DisplayName>
+    <Value>0</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Plate Code</Name>
+    <DisplayName>Plate Code</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Plate Position</Name>
+    <DisplayName>Plate Position</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Rack Code</Name>
+    <DisplayName>Rack Code</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>Rack Position</Name>
+    <DisplayName>Rack Position</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>12135693457</Name>
+    <DisplayName>Требуется штрихкод</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>21944199433</Name>
+    <DisplayName>Количество пробы:</DisplayName>
+    <Value>1</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>31955642716</Name>
+    <DisplayName>Объем двойного ввода</DisplayName>
+    <Value>
+    </Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>4375894982</Name>
+    <DisplayName>TuneName</DisplayName>
+    <Value>ATUNE.U</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>51334583430</Name>
+    <DisplayName>TunePath</DisplayName>
+    <Value>D:\MassHunter\GCMS\1\5975\</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>6443476720</Name>
+    <DisplayName>TuneDateStamp</DisplayName>
+    <Value>2024-07-29T12:36:31+03:00</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>7606310005</Name>
+    <DisplayName>MSFirmwareVersion</DisplayName>
+    <Value>7.02.29</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>OperatorName</Name>
+    <DisplayName>OperatorName</DisplayName>
+    <Value>Roman A Sidorov</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>AcqTime</Name>
+    <DisplayName>AcqTime</DisplayName>
+    <Value>2024-08-01T18:15:54.1474088+03:00</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>SampleLockedRunMode</Name>
+    <DisplayName>SampleLockedRunMode</DisplayName>
+    <Value>False</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>RunCompletedFlag</Name>
+    <DisplayName>RunCompletedFlag</DisplayName>
+    <Value>True</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+  <Field>
+    <Name>InstrumentName</Name>
+    <DisplayName>InstrumentName</DisplayName>
+    <Value>Agilent7890A-5975C</Value>
+    <DataType>8</DataType>
+    <Units>
+    </Units>
+  </Field>
+</SampleInfo>
