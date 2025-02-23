@@ -1,10 +1,15 @@
 use anyhow::Result;
+use chrono::NaiveDateTime;
 use clap::{Parser, ValueEnum};
+use metadata::{MetaDataFrame, Metadata};
 use ms_parser::Reader;
 use polars::prelude::*;
-use ron::{extensions::Extensions, ser::PrettyConfig};
+use semver::Version;
 use serde::{Deserialize, Serialize};
-use std::{env, fs, path::PathBuf};
+use std::{env, fs::File, iter, path::PathBuf};
+use tracing::{error, info, warn};
+
+const DBYHMP: &str = "%d %b %y %I:%M %P";
 
 #[derive(Parser, Debug)]
 #[command(version, about)]
@@ -20,90 +25,81 @@ struct Args {
 #[serde(rename_all = "lowercase")]
 pub enum Format {
     #[default]
-    Bin,
+    Ipc,
     Ron,
 }
 
 pub fn main() -> Result<()> {
-    unsafe { env::set_var("POLARS_FMT_MAX_COLS", "256") };
-    unsafe { env::set_var("POLARS_FMT_MAX_ROWS", "256") };
-    unsafe { env::set_var("POLARS_FMT_TABLE_CELL_LIST_LEN", "256") };
-    // unsafe { env::set_var("POLARS_FMT_STR_LEN", "256") };
+    tracing_subscriber::fmt::init();
 
-    let args = Args::parse();
+    // let args = Args::parse();
 
-    let reader = Reader::new(&args.path)?;
-    println!("header: {:#?}", reader.header());
+    // let t = 60;
+    // let dt = 1;
+    for t in (60..=140).step_by(10) {
+        for dt in 1..=10 {
+            for index in 1..=4 {
+                let path = PathBuf::from(format!("input/ms/constant-flow/{t}/{t}-{dt}.{index}.ms"));
+                if !path.exists() {
+                    error!(?path);
+                    continue;
+                } else {
+                    println!("{}", path.display());
+                }
+                let reader = Reader::new(&path)?;
+                let header = reader.header();
+                // println!("header: {header:#?}");
 
-    let mut retention_time = Vec::new();
-    let mut mass_to_charge = Vec::new();
-    let mut signal = Vec::new();
-    for spectral in reader.spectrals()? {
-        retention_time.push(spectral.retention_time());
-        mass_to_charge.push(Series::from_iter(
-            spectral.peaks().iter().map(|peak| peak.mass_to_charge()),
-        ));
-        signal.push(Series::from_iter(
-            spectral.peaks().iter().map(|peak| peak.packed_signal()),
-        ));
-    }
-    let data_frame = df! {
-        "RetentionTime" => retention_time,
-        "MassToCharge" => mass_to_charge,
-        "Signal" => signal,
-    }?
-    .lazy()
-    .explode(["MassToCharge", "Signal"])
-    .sort_by_exprs(
-        [col("RetentionTime"), col("MassToCharge")],
-        Default::default(),
-    )
-    .collect()?;
+                let mut retention_time = Vec::new();
+                let mut mass_to_charge = Vec::new();
+                let mut signal = Vec::new();
+                for spectral in reader.spectrals()? {
+                    retention_time.push(spectral.retention_time());
+                    mass_to_charge.push(Series::from_iter(
+                        spectral.peaks().iter().map(|peak| peak.mass_to_charge()),
+                    ));
+                    signal.push(Series::from_iter(
+                        spectral.peaks().iter().map(|peak| peak.packed_signal()),
+                    ));
+                }
+                let data_frame = df! {
+                    "RetentionTime" => retention_time,
+                    "MassToCharge" => mass_to_charge,
+                    "Signal" => signal,
+                }?
+                .lazy()
+                .explode(["MassToCharge", "Signal"])
+                .sort_by_exprs(
+                    [col("RetentionTime"), col("MassToCharge")],
+                    Default::default(),
+                )
+                .collect()?;
 
-    // lazy_data_frame = lazy_data_frame
-    // .explode(["MassToCharge", "Signal"])
-    // // .group_by([col("RetentionTime"), col("MassToCharge")])
-    // // .agg([col("Signal")])
-    // .sort_by_exprs(
-    //     [col("RetentionTime"), col("MassToCharge")],
-    //     Default::default(),
-    // )
-    // .with_columns([
-    //     col("MassToCharge"),
-    //     col("Signal"),
-    //     as_struct(vec![col("MassToCharge"), col("Signal")]).alias("Peak"),
-    // ])
-    // .group_by([col("RetentionTime")])
-
-    match args.format {
-        Format::Bin => {
-            let contents = bincode::serialize(&data_frame)?;
-            fs::write("df.bin", contents)?;
-        }
-        Format::Ron => {
-            let contents = ron::ser::to_string_pretty(
-                &data_frame,
-                PrettyConfig::default().extensions(Extensions::IMPLICIT_SOME),
-            )?;
-            fs::write("df.ron", contents)?;
+                let mut meta = Metadata::default();
+                meta.name = format!("constant flow {t} {dt}");
+                meta.description = reader.header().to_string();
+                meta.authors = vec!["Giorgi Kazakov".into(), "Roman Sidorov".into()];
+                meta.version = Some(Version::new(0, 0, index));
+                meta.date = Some(NaiveDateTime::parse_from_str(&header.acq_date, DBYHMP)?.date());
+                let file = File::create(path.with_extension("ipc"))?;
+                MetaDataFrame::new(meta, data_frame).write(file)?;
+            }
         }
     }
-
-    // let grouped = data_frame
-    //     .clone()
-    //     .lazy()
-    //     .group_by(["Retention time"])
-    //     .agg([
-    //         col("Mass to charge").sort(Default::default()),
-    //         col("Signal"),
-    //         col("Mass to charge").min().alias("MIN mass to charge"),
-    //         col("Mass to charge").max().alias("MAX mass to charge"),
-    //         col("Mass to charge").sum().alias("SUM mass to charge"),
-    //     ])
-    //     .sort(["Retention time"], Default::default())
-    //     .collect()?;
-    // println!("grouped: {}", grouped);
     Ok(())
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn test() {
+        // let s = "20 Aug 24 02:26 am";
+        let s = "07 Aug 24  08:00 pm";
+        let t = NaiveDateTime::parse_from_str(s, "%d %b %y %I:%M %P");
+        println!("t: {t:?}");
+    }
 }
 
 // pub fn parse(self) -> Result<DataFrame> {

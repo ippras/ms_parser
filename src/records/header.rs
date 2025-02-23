@@ -4,7 +4,11 @@ use nom::{
     bytes::complete::take,
     number::complete::{be_i16, be_i32},
 };
-use std::{ops::RangeInclusive, str};
+use std::{
+    fmt::{self, Display, Formatter},
+    ops::RangeInclusive,
+    str,
+};
 
 pub const HEADER_SIZE: usize = 512;
 
@@ -26,7 +30,7 @@ pub struct Header {
     data_name: String,
     misc_info: String,
     operator_name: String,
-    acq_date: String,
+    pub acq_date: String,
     instrument_model: String,
     inlet: String,
     method_file: String,
@@ -116,5 +120,29 @@ impl Parse for Header {
                 signal_range: signal_minimum as _..=signal_maximum as _,
             },
         ))
+    }
+}
+
+impl Display for Header {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        writeln!(f, "file_number: {}", self.file_number)?;
+        writeln!(f, "file_string: {}", self.file_string)?;
+        writeln!(f, "data_name: {}", self.data_name)?;
+        writeln!(f, "misc_info: {}", self.misc_info)?;
+        writeln!(f, "operator_name: {}", self.operator_name)?;
+        writeln!(f, "acq_date: {}", self.acq_date)?;
+        writeln!(f, "instrument_model: {}", self.instrument_model)?;
+        writeln!(f, "inlet: {}", self.inlet)?;
+        writeln!(f, "method_file: {}", self.method_file)?;
+        writeln!(f, "file_type: {}", self.file_type)?;
+        writeln!(f, "seq_index: {}", self.seq_index)?;
+        writeln!(f, "als_bottle: {}", self.als_bottle)?;
+        writeln!(f, "replicate: {}", self.replicate)?;
+        writeln!(f, "directory_entry_type: {}", self.directory_entry_type)?;
+        writeln!(f, "extra_records: {}", self.extra_records)?;
+        writeln!(f, "data_record_count: {}", self.data_record_count)?;
+        writeln!(f, "retention_time_range: {:?}", self.retention_time_range)?;
+        writeln!(f, "signal_range: {:?}", self.signal_range)?;
+        Ok(())
     }
 }

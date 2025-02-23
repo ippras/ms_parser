@@ -10,6 +10,8 @@ cargo run --example=convert -- --path="input/Amal/60/Flow 1 ml-min/SUP37-60C-4C-
 
 cargo run --example=convert -- --path="input/Amal/60/Flow 1 ml-min/SUP37-60C-C2-MIN_30 PSI-1.D/DATA.MS"
 
+cargo run --example=convert -- --path="input/source/Constant flow/150C/150C_1ml-min_1C-min_1.D/DATA.MS"
+
 cargo run --example=display -- --path=df.bin
 
 // 0.10

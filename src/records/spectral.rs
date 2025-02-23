@@ -1,11 +1,12 @@
 use super::Parse;
-use crate::{error::Result, utils::Preview};
+use crate::error::Result;
 use nom::{
     Parser as _,
     multi::count,
     number::complete::{be_i16, be_i32, be_u16},
     sequence::pair,
 };
+use polars_utils::format_list_truncated;
 use std::fmt::{self, Display, Formatter};
 
 const MASS_TO_CHARGE_FACTOR: f32 = 20.0;
@@ -75,7 +76,10 @@ impl Display for Spectral {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         f.debug_struct("Spectral")
             .field("retention_time", &self.retention_time)
-            .field("peaks", &format_args!("{}", Preview(&self.peaks)))
+            .field(
+                "peaks",
+                &format_args!("{}", format_list_truncated!(&self.peaks, 2)),
+            )
             .finish()
     }
 }
